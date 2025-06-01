@@ -9,6 +9,10 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
   </head>
   <body>
     <!-- Navigation -->
@@ -16,182 +20,276 @@
       <div class="container nav-container">
         <a href="#" class="logo">Abhimanyu Kotari</a>
         <ul class="nav-links">
-          <li><a href="#about">About</a></li>
-          <li><a href="#projects">My Projects</a></li>
-          <li><a href="#certifications">Certifications</a></li>
+          <li>
+            <a href="#about"><i class="fas fa-user"></i> About</a>
+          </li>
+          <li>
+            <a href="#projects"><i class="fas fa-code"></i> Projects</a>
+          </li>
+          <li>
+            <a href="#certifications"
+              ><i class="fas fa-certificate"></i> Certifications</a
+            >
+          </li>
         </ul>
+        <div class="hamburger">
+          <i class="fas fa-bars"></i>
+        </div>
       </div>
     </nav>
 
     <!-- Hero Section -->
     <header class="hero" id="top">
       <div class="container">
-        <img src="myphoto.jpg" alt="Abhimanyu Kotari" class="profile-pic" />
+        <div class="profile-container">
+          <img src="myphoto.jpg" alt="Abhimanyu Kotari" class="profile-pic" />
+          <div class="tech-icons">
+            <i class="fab fa-html5" title="HTML5"></i>
+            <i class="fab fa-css3-alt" title="CSS3"></i>
+            <i class="fab fa-js" title="JavaScript"></i>
+            <i class="fab fa-python" title="Python"></i>
+            <i class="fas fa-database" title="Database"></i>
+          </div>
+        </div>
         <h1>Hello, I'm <span class="highlight">Abhimanyu Kotari</span></h1>
         <p class="subtitle">
           Full Stack Developer | Data Science Student | Aspiring Entrepreneur
         </p>
-        <a href="#about" class="btn">About Me</a>
       </div>
     </header>
 
     <!-- About Section -->
     <section id="about" class="section">
       <div class="container">
-        <h2>About Me</h2>
-        <p>
-          I'm an 18-year-old BSc (Hons) Data Science student at RV University,
-          passionate about solving real-world problems by combining data, clean
-          code, and thoughtful design.
-        </p>
-        <p>
-          I'm currently interning in a professional setting where I'm gaining
-          hands-on experience in DevOps and software development, which is
-          helping me build strong practical skills alongside my academic
-          learning.
-        </p>
-        <p>
-          As part of my coursework, I developed <strong>CanKey</strong>, a
-          project focused on creating innovative, tech-driven solutions. This
-          experience sharpened my abilities in project planning, coding, and
-          product development within a collaborative environment.
-        </p>
-        <p>
-          I'm proficient in web development technologies such as HTML, CSS,
-          JavaScript, and Node.js, and I'm continuously expanding my expertise
-          in full-stack development and data science tools.
-        </p>
-        <p>
-          I'm driven by curiosity and the desire to create impactful solutions,
-          constantly seeking new challenges and opportunities to learn and grow.
-        </p>
+        <h2><i class="fas fa-user"></i> About Me</h2>
+        <div class="about-content">
+          <div class="about-text">
+            <p>
+              I'm an 18-year-old BSc (Hons) Data Science student at RV
+              University, passionate about solving real-world problems by
+              combining data, clean code, and thoughtful design.
+            </p>
+            <p>
+              I'm currently interning in a professional setting where I'm
+              gaining hands-on experience in DevOps and software development,
+              which is helping me build strong practical skills alongside my
+              academic learning.
+            </p>
+            <p>
+              As part of my coursework, I developed <strong>CanKey</strong>, a
+              project focused on creating innovative, tech-driven solutions.
+              This experience sharpened my abilities in project planning,
+              coding, and product development within a collaborative
+              environment.
+            </p>
+          </div>
+          <div class="skills">
+            <h3>My Skills</h3>
+            <div class="skills-grid">
+              <div class="skill-item">
+                <i class="fab fa-python"></i>
+                <span>Python</span>
+              </div>
+              <div class="skill-item">
+                <i class="fas fa-database"></i>
+                <span>SQL</span>
+              </div>
+              <div class="skill-item">
+                <i class="fab fa-js"></i>
+                <span>JavaScript</span>
+              </div>
+              <div class="skill-item">
+                <i class="fab fa-html5"></i>
+                <span>HTML5</span>
+              </div>
+              <div class="skill-item">
+                <i class="fab fa-css3-alt"></i>
+                <span>CSS3</span>
+              </div>
+              <div class="skill-item">
+                <i class="fab fa-git-alt"></i>
+                <span>Git</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="section horizontal-scroll">
-      <div class="scroll-container">
-        <div class="card">
-          <a
-            href="https://github.com/abhimanyu-kotari/sem-_python.git"
-            target="_blank"
-          >
-            <h3>🔗Loan Insights</h3>
-            <p>
-              A Python-based exploratory data analysis (EDA) project on a bank
-              loan dataset that uncovers key factors influencing personal loan
-              approvals using visualizations and statistical insights. It
-              leverages pandas, seaborn, and matplotlib to clean, analyze, and
-              visualize customer data for actionable business understanding.
-            </p>
-          </a>
+    <section id="projects" class="section">
+      <div class="container">
+        <h2><i class="fas fa-code"></i> My Projects</h2>
+        <div class="horizontal-scroll">
+          <div class="scroll-container">
+            <div class="card">
+              <a
+                href="https://github.com/abhimanyu-kotari/sem-_python.git"
+                target="_blank"
+              >
+                <div class="card-icon">
+                  <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>Loan Insights</h3>
+                <p>
+                  A Python-based exploratory data analysis (EDA) project on a
+                  bank loan dataset that uncovers key factors influencing
+                  personal loan approvals using visualizations and statistical
+                  insights.
+                </p>
+                <div class="tech-tags">
+                  <span class="tag">Python</span>
+                  <span class="tag">Pandas</span>
+                  <span class="tag">Matplotlib</span>
+                </div>
+              </a>
+            </div>
+            <div class="card">
+              <a
+                href="https://github.com/abhimanyu-kotari/Git.git"
+                target="_blank"
+              >
+                <div class="card-icon">
+                  <i class="fas fa-laptop-code"></i>
+                </div>
+                <h3>Portfolio Website</h3>
+                <p>
+                  Built an interactive portfolio website using HTML, CSS, and
+                  JavaScript to showcase my data analysis projects, including a
+                  detailed exploratory analysis of bank loan data.
+                </p>
+                <div class="tech-tags">
+                  <span class="tag">HTML</span>
+                  <span class="tag">CSS</span>
+                  <span class="tag">JavaScript</span>
+                </div>
+              </a>
+            </div>
+          </div>
         </div>
-        <div class="card">
-          <a href="https://github.com/abhimanyu-kotari/Git.git" target="_blank">
-            <h3>🔗Making my Portfolio</h3>
-            <p>
-              Built an interactive portfolio website using HTML, CSS, and
-              JavaScript to showcase my data analysis projects, including a
-              detailed exploratory analysis of bank loan data. The site
-              highlights visual insights and key factors influencing loan
-              approvals through engaging and user-friendly design.
-            </p>
-          </a>
+        <div class="section-footer">
+          <a href="#top" class="btn small"
+            ><i class="fas fa-arrow-up"></i> Back to Top</a
+          >
         </div>
       </div>
-      <a href="#top" class="btn small">⬆ Back to Top</a>
     </section>
 
     <!-- Certifications Section -->
-    <section id="certifications" class="section horizontal-scroll">
-      <div class="scroll-container">
-        <div class="card">
-          <a
-            href="https://1drv.ms/i/c/23b3820b5ade0789/Eaxbkyo7pwxNusMFxfNEKYIB9vZot16zhQSuCKE1_NdSXA?e=JooYpw"
-            target="_blank"
-          >
-            <h3>✅Bash Scripting in Linux</h3>
-            <p>
-              Successfully completed course on Linux bash scripting, awarded by
-              Infosys.
-            </p>
-          </a>
+    <section id="certifications" class="section">
+      <div class="container">
+        <h2><i class="fas fa-certificate"></i> Certifications</h2>
+        <div class="horizontal-scroll">
+          <div class="scroll-container">
+            <div class="card">
+              <a
+                href="https://1drv.ms/i/c/23b3820b5ade0789/Eaxbkyo7pwxNusMFxfNEKYIB9vZot16zhQSuCKE1_NdSXA?e=JooYpw"
+                target="_blank"
+              >
+                <div class="card-icon">
+                  <i class="fas fa-terminal"></i>
+                </div>
+                <h3>Bash Scripting in Linux</h3>
+                <p>
+                  Successfully completed course on Linux bash scripting, awarded
+                  by Infosys.
+                </p>
+                <div class="cert-date">Completed: 2025</div>
+              </a>
+            </div>
+            <div class="card">
+              <a
+                href="https://1drv.ms/i/c/23b3820b5ade0789/Eb_oIZ1ioYxCloO9cNlGxMEB1knSiiZLAN2pEFnxGzu5cw?e=xDSx0y"
+                target="_blank"
+              >
+                <div class="card-icon">
+                  <i class="fas fa-desktop"></i>
+                </div>
+                <h3>CompTIA IT Fundamentals: Operating Systems</h3>
+                <p>
+                  Successfully completed course on CompTIA IT
+                  Fundamentals:Operating Systems, awarded by Infosys.
+                </p>
+                <div class="cert-date">Completed: 2025</div>
+              </a>
+            </div>
+            <div class="card">
+              <a
+                href="https://1drv.ms/i/c/23b3820b5ade0789/EXwLDjFPTztLgj0Apo_wKJkBWrcVnDvJh3SNZPwdLCETiw?e=sL5gbA"
+                target="_blank"
+              >
+                <div class="card-icon">
+                  <i class="fas fa-robot"></i>
+                </div>
+                <h3>Use Generative AI for Software Development</h3>
+                <p>
+                  Successfully completed course on Use Generative AI for
+                  Software Development, awarded by IBM SkillsBuild.
+                </p>
+                <div class="cert-date">Completed: 2025</div>
+              </a>
+            </div>
+            <div class="card">
+              <a
+                href="https://1drv.ms/i/c/23b3820b5ade0789/ETB-z3gBLz1OsMVKkz-sfsoBZw4xWECqohQfocqEIuI8pQ?e=lhfecJ"
+                target="_blank"
+              >
+                <div class="card-icon">
+                  <i class="fab fa-python"></i>
+                </div>
+                <h3>Python Fundamentals</h3>
+                <p>
+                  Successfully completed course on Python Fundamentals, awarded
+                  by Infosys.
+                </p>
+                <div class="cert-date">Completed: 2025</div>
+              </a>
+            </div>
+            <div class="card">
+              <a
+                href="https://1drv.ms/i/c/23b3820b5ade0789/ESJ8C8-siFNPpdMvMwLJz5kB3P8jOWZ2ng8wUdjpeBHT1A?e=q5iq8E"
+                target="_blank"
+              >
+                <div class="card-icon">
+                  <i class="fas fa-brain"></i>
+                </div>
+                <h3>AI Tools Workshop</h3>
+                <p>
+                  Successfully completed course on AI Tools Workshop, awarded by
+                  Infosys.
+                </p>
+                <div class="cert-date">Completed: 2025</div>
+              </a>
+            </div>
+          </div>
         </div>
-        <div class="card">
-          <a
-            href="https://1drv.ms/i/c/23b3820b5ade0789/Eb_oIZ1ioYxCloO9cNlGxMEB1knSiiZLAN2pEFnxGzu5cw?e=xDSx0y"
-            target="_blank"
+        <div class="section-footer">
+          <a href="#top" class="btn small"
+            ><i class="fas fa-arrow-up"></i> Back to Top</a
           >
-            <h3>CompTIA IT Fundamentals:Operating Systems</h3>
-            <p>
-              Successfully completed course on CompTIA IT Fundamentals:Operating
-              Systems, awarded by Infosys.
-            </p>
-          </a>
-        </div>
-        <div class="card">
-          <a
-            href="https://1drv.ms/i/c/23b3820b5ade0789/EXwLDjFPTztLgj0Apo_wKJkBWrcVnDvJh3SNZPwdLCETiw?e=sL5gbA"
-            target="_blank"
-          >
-            <h3>Use Generative AI for Software Development</h3>
-            <p>
-              Successfully completed course on Use Generative AI for Software
-              Development, awarded by IBM SkillsBuild.
-            </p>
-          </a>
-        </div>
-        <div class="card">
-          <a
-            href="https://1drv.ms/i/c/23b3820b5ade0789/ETB-z3gBLz1OsMVKkz-sfsoBZw4xWECqohQfocqEIuI8pQ?e=lhfecJ"
-            target="_blank"
-          >
-            <h3>Python-Fundamentals</h3>
-            <p>
-              Successfully completed course on Python Python-Fundamentals,
-              awarded by Infosys.
-            </p>
-          </a>
-        </div>
-        <div class="card">
-          <a
-            href="https://1drv.ms/i/c/23b3820b5ade0789/ESJ8C8-siFNPpdMvMwLJz5kB3P8jOWZ2ng8wUdjpeBHT1A?e=q5iq8E"
-            target="_blank"
-          >
-            <h3>AI Tools Workshop</h3>
-            <p>
-              Successfully completed course on Python Python-Fundamentals,
-              awarded by Infosys.
-            </p>
-          </a>
         </div>
       </div>
-      <a href="#top" class="btn small">⬆ Back to Top</a>
     </section>
 
     <!-- Footer -->
     <footer>
-      <p>
-        📧
-        <a href="mailto:abhimanyukotari6@gmail.com"
-          >abhimanyukotari6@gmail.com</a
-        >
-      </p>
-
-      <p>
-        🔗 Connect with me:
-        <a href="https://github.com/abhimanyu-kotari" target="_blank">GitHub</a>
-        |
-        <a href="https://www.linkedin.com/in/abhimanyu-kotari" target="_blank"
-          >LinkedIn</a
-        >
-        |
-        <a href="https://www.instagram.com/YOUR_USERNAME" target="_blank"
-          >Instagram</a
-        >
-      </p>
-
-      <p>© 2025 Abhimanyu Kotari</p>
+      <div class="container">
+        <div class="social-links">
+          <a href="https://github.com/abhimanyu-kotari" target="_blank"
+            ><i class="fab fa-github"></i
+          ></a>
+          <a href="https://www.linkedin.com/in/abhimanyu-kotari" target="_blank"
+            ><i class="fab fa-linkedin"></i
+          ></a>
+          <a href="https://www.instagram.com/YOUR_USERNAME" target="_blank"
+            ><i class="fab fa-instagram"></i
+          ></a>
+          <a href="https://twitter.com/YOUR_USERNAME" target="_blank"
+            ><i class="fab fa-twitter"></i
+          ></a>
+        </div>
+        <p>© 2025 Abhimanyu Kotari. All rights reserved.</p>
+      </div>
     </footer>
 
     <!-- Modal for Profile Photo -->
