@@ -1,5 +1,3 @@
-/* Your existing CSS remains exactly the same */
-/* Reset */
 * {
   margin: 0;
   padding: 0;
@@ -402,5 +400,75 @@ a,
 
   .footer-links {
     gap: 2rem;
+  }
+}
+
+/* skills part */
+
+/* ===== ONLY UPDATING SKILLS SECTION ===== */
+.skills {
+  margin-top: 3rem; /* Added more space above skills */
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+/* Wave animation container */
+.skill-items-container {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+  margin: 2rem 0;
+}
+
+/* Moving wave effect */
+.skill-items-wave {
+  display: flex;
+  position: absolute;
+  animation: waveFlow 15s linear infinite;
+}
+
+.skill-item {
+  background: rgba(0, 223, 196, 0.1);
+  border: 1px solid rgba(0, 223, 196, 0.3);
+  border-radius: 8px;
+  padding: 0.8rem;
+  margin: 0 0.5rem;
+  min-width: 100px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.skill-item:hover {
+  transform: translateY(-5px);
+  background: rgba(0, 223, 196, 0.2);
+  box-shadow: 0 5px 15px rgba(0, 223, 196, 0.3);
+}
+
+/* Wave animation */
+@keyframes waveFlow {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: -50%;
+  } /* Adjust based on content width */
+}
+
+/* For mobile - stack vertically */
+@media (max-width: 768px) {
+  .skill-items-container {
+    height: auto;
+    overflow: visible;
+  }
+  .skill-items-wave {
+    position: static;
+    flex-wrap: wrap;
+    animation: none;
+    justify-content: center;
   }
 }

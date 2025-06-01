@@ -171,3 +171,65 @@ document.addEventListener("DOMContentLoaded", function () {
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
 });
+
+// skills
+
+// 10. Skills Wave Animation
+function setupSkillsWave() {
+  const skillsContainer = document.querySelector(".skill-items-container");
+  const skillsWave = document.querySelector(".skill-items-wave");
+
+  if (!skillsContainer || !skillsWave) return;
+
+  // Skills data (customize with your own)
+  const skills = [
+    { name: "Python", icon: "fab fa-python" },
+    { name: "SQL", icon: "fas fa-database" },
+    { name: "JavaScript", icon: "fab fa-js" },
+    { name: "HTML5", icon: "fab fa-html5" },
+    { name: "CSS3", icon: "fab fa-css3-alt" },
+    { name: "Git", icon: "fab fa-git-alt" },
+    { name: "GitHub", icon: "fab fa-github" },
+    { name: "PowerPoint", icon: "fab fa-microsoft" },
+    { name: "C", icon: "fas fa-code" },
+    { name: "C++", icon: "fas fa-code" },
+    { name: "Linux", icon: "fab fa-linux" },
+    { name: "Canva", icon: "fas fa-palette" },
+    { name: "AI Tools", icon: "fas fa-robot" },
+    { name: "ChatGPT", icon: "fas fa-comment-alt" },
+  ];
+
+  // Duplicate skills for seamless looping
+  const duplicatedSkills = [...skills, ...skills];
+
+  // Create skill items
+  skillsWave.innerHTML = duplicatedSkills
+    .map(
+      (skill) => `
+    <div class="skill-item">
+      <i class="${skill.icon}"></i>
+      <span>${skill.name}</span>
+    </div>
+  `
+    )
+    .join("");
+
+  // Adjust animation duration based on number of skills
+  const duration = skills.length * 2;
+  skillsWave.style.animationDuration = `${duration}s`;
+
+  // Pause animation on hover
+  skillsWave.addEventListener("mouseenter", () => {
+    skillsWave.style.animationPlayState = "paused";
+  });
+
+  skillsWave.addEventListener("mouseleave", () => {
+    skillsWave.style.animationPlayState = "running";
+  });
+}
+
+// Initialize when DOM loads
+document.addEventListener("DOMContentLoaded", function () {
+  setupSkillsWave();
+  // ... keep all your existing DOMContentLoaded code ...
+});
