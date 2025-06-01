@@ -1,3 +1,29 @@
+/* Responsive fix for Hero section on small screens */
+@media (max-width: 480px) {
+  .hero {
+    padding: 2rem 1rem; /* Less vertical padding */
+  }
+
+  .hero h1 {
+    font-size: 1.5rem; /* Smaller heading on phones */
+  }
+
+  .subtitle {
+    font-size: 1rem; /* Smaller subtitle */
+  }
+
+  .profile-pic {
+    width: 100px; /* Smaller profile pic */
+    height: 100px;
+    border-width: 3px;
+  }
+
+  .btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+}
+
 /* Reset */
 * {
   margin: 0;
