@@ -1,8 +1,10 @@
-document.getElementById("contactBtn").addEventListener("click", () => {
-  const emailElem = document.getElementById("email");
-  if (emailElem.style.display === "none") {
-    emailElem.style.display = "block";
-  } else {
-    emailElem.style.display = "none";
-  }
+// Smooth scroll for internal links
+document.querySelectorAll('a[href^="#"]').forEach((link) => {
+  link.addEventListener("click", function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute("href"));
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth" });
+    }
+  });
 });
