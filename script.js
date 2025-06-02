@@ -194,44 +194,6 @@ class PortfolioEnhancer {
       animateElements.forEach((el) => el.classList.add("animate"));
     }
   }
-  setupContactForm() {
-    const contactForm = document.querySelector(".contact-form");
-    if (!contactForm) return;
-
-    const validateForm = () => {
-      let isValid = true;
-      const nameInput = contactForm.querySelector('input[name="name"]');
-      const emailInput = contactForm.querySelector('input[name="email"]');
-      const subjectInput = contactForm.querySelector('input[name="subject"]');
-      const messageInput = contactForm.querySelector(
-        'textarea[name="message"]'
-      );
-
-      const validateField = (field, pattern = null) => {
-        const value = field.value.trim();
-        if (!value || (pattern && !pattern.test(value))) {
-          field.classList.add("error");
-          return false;
-        }
-        field.classList.remove("error");
-        return true;
-      };
-
-      isValid &= validateField(nameInput);
-      isValid &= validateField(emailInput, /^[^\s@]+@[^\s@]+\.[^\s@]+$/);
-      isValid &= validateField(subjectInput);
-      isValid &= validateField(messageInput);
-
-      return !!isValid;
-    };
-
-    contactForm.addEventListener("submit", (e) => {
-      if (!validateForm()) {
-        e.preventDefault(); // Only prevent if validation fails
-      }
-      // Otherwise, let Netlify handle the submission
-    });
-  }
 
   setupThemeToggle() {
     const modeToggle = document.getElementById("theme-toggle");
@@ -387,3 +349,35 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.appendChild(errorMessage);
   }
 });
+
+// contact form
+
+setupContactForm();
+{
+  const form = document.getElementById("contactForm");
+  if (!form) return;
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+
+    // Netlify requires the form-name field in the POST body
+    if (!formData.has("form-name")) {
+      formData.append("form-name", form.getAttribute("name"));
+    }
+
+    try {
+      await fetch("/", {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: new URLSearchParams(formData).toString(),
+      });
+
+      form.reset();
+      alert("Thank you! Your message has been sent.");
+    } catch (error) {
+      alert("Sorry, there was a problem submitting your form.");
+    }
+  });
+}
