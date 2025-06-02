@@ -30,59 +30,34 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
   </head>
   <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-      <div class="container nav-container">
-        <a href="#" class="logo">Abhimanyu Kotari</a>
+  <!-- Navigation -->
+<nav class="navbar">
+  <div class="container nav-container">
+  
+    <!-- Logo in center or right -->
+    <a href="#" class="logo">Abhimanyu Kotari</a>
 
-        <!-- Mobile menu button -->
-        <button class="hamburger" aria-expanded="false" aria-label="Menu">
-          <span class="hamburger-box">
-            <!-- This span is styled to create the hamburger menu icon -->
-            <span class="hamburger-inner"></span>
-          </span>
-        </button>
+    <!-- Navigation Links -->
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#about"><span>About</span></a></li>
+      <li><a href="#experience"><span>Experience</span></a></li>
+      <li><a href="#projects"><span>Projects</span></a></li>
+      <li><a href="#certifications"><span>Certifications</span></a></li>
+      <li><a href="#contact"><span>Contact</span></a></li>
+    </ul>
+    <!-- Hamburger menu on the left -->
+    <button class="hamburger" aria-expanded="false" aria-label="Menu">
+      <span class="hamburger-box">
+        <span class="hamburger-inner"></span>
+      </span>
+    </button>
 
-        <ul class="nav-links" id="nav-links">
-          <li>
-            <a href="#about">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm4-3a4 4 0 1 1-8 0 4 4 0 0 1 8 0zM8 9a6 6 0 0 0-6 6v1h12v-1a6 6 0 0 0-6-6zm-5 6a5 5 0 0 1 10 0H3z"/>
-              </svg>
-              <span>About</span>
-            </a>
-          </li>
-          <li>
-            <a href="#experience"
-              ><i class="fas fa-briefcase"></i> <span>Experience</span></a
-            >
-          </li>
-          <li>
-            <a href="#projects"
-              ><i class="fas fa-code"></i> <span>Projects</span></a
-            >
-          </li>
-          <li>
-            <a href="#certifications"
-              ><i class="fas fa-certificate"></i> <span>Certifications</span></a
-            >
-          </li>
-          <li>
-            <a href="#contact"
-              ><i class="fas fa-envelope"></i> <span>Contact</span></a
-            >
-          </li>
-        </ul>
-
-        <button
-          id="theme-toggle"
-          class="theme-toggle"
-          aria-label="Toggle dark mode"
-        >
-          <i class="fas fa-moon"></i>
-        </button>
-      </div>
-    </nav>
+    <!-- Theme toggle button -->
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+      <i class="fas fa-moon"></i>
+    </button>
+  </div>
+</nav>
 
     <!-- Hero Section -->
     <header class="hero" id="top">
@@ -176,10 +151,10 @@
               <div class="timeline-item">
                 <h4>BSc (Hons) Data Science</h4>
                 <p class="timeline-meta">
-                  RV University | 2023 - 2026 (Expected)
+                  RV University | 2024 - 2028 
                 </p>
                 <p>
-                  Coursework includes Machine Learning, Statistical Analysis,
+                  Coursework includes Artificial Inteligence, Machine Learning, Statistical Analysis,
                   and Big Data Technologies
                 </p>
               </div>
@@ -188,10 +163,9 @@
             <div class="professional-summary">
               <h3><i class="fas fa-lightbulb"></i> What I Do</h3>
               <p>
-                I specialize in creating full-stack applications with clean,
-                efficient code and data-driven backends. Currently interning in
-                a professional DevOps environment, I'm gaining hands-on
-                experience with cloud technologies and CI/CD pipelines.
+                I specialize in building full-stack applications and data-driven solutions,
+                 currently gaining hands-on experience with DevOps tools, cloud platforms, 
+                 and CI/CD workflows during my internship.
               </p>
             </div>
           </div>
@@ -399,16 +373,15 @@
             <div class="timeline-content">
               <h3>DevOps Intern</h3>
               <div class="timeline-meta">
-                <span class="company">Company Name</span>
-                <span class="date">2024 - Present</span>
+                <span class="company">Ganglia Technologies</span>
+                <span class="date">June 2025 - Present</span>
               </div>
               <ul class="timeline-description">
-                <li>Assisting in CI/CD pipeline development and maintenance</li>
-                <li>Working with containerization technologies like Docker</li>
-                <li>Participating in cloud infrastructure management</li>
-                <li>
-                  Collaborating with development teams on deployment strategies
-                </li>
+                <li>Analyzing datasets to extract meaningful insights using Python and pandas</li>
+<li>Building and evaluating machine learning models for predictive analytics</li>
+<li>Working with tools like Jupyter, scikit-learn, and NumPy for data processing</li>
+<li>Collaborating with the AI team to develop data-driven solutions and prototypes</li>
+
               </ul>
             </div>
           </div>
@@ -433,7 +406,7 @@
           <div class="project-card" data-category="data">
             <div class="project-image">
               <img
-                src="project1.webp"
+                src="loan.png"
                 alt="Loan Insights Project"
                 loading="lazy"
               />
@@ -452,13 +425,13 @@
               </div>
               <div class="project-links">
                 <a
-                  href="https://github.com/abhimanyu-kotari/loan-insights.git"
+                  href="https://github.com/abhimanyu-kotari/sem-_python.git"
                   target="_blank"
                   class="project-link"
                 >
                   <i class="fab fa-github"></i> Code
                 </a>
-                <a href="#" class="project-link">
+                <a href="https://github.com/abhimanyu-kotari/sem-_python.git" class="project-link">
                   <i class="fas fa-external-link-alt"></i> Live Demo
                 </a>
               </div>
@@ -468,7 +441,7 @@
           <!-- Project 2 -->
           <div class="project-card" data-category="web">
             <div class="project-image">
-              <img src="project2.webp" alt="Portfolio Website" loading="lazy" />
+              <img src="portfolio.jpg" alt="Portfolio Website" loading="lazy" />
             </div>
             <div class="project-content">
               <h3>Portfolio Website</h3>
@@ -484,13 +457,13 @@
               </div>
               <div class="project-links">
                 <a
-                  href="https://github.com/abhimanyu-kotari/portfolio-website"
+                  href="https://github.com/abhimanyu-kotari/Git.git"
                   target="_blank"
                   class="project-link"
                 >
                   <i class="fab fa-github"></i> Code
                 </a>
-                <a href="#" class="project-link">
+                <a href="https://git-ashy-six.vercel.app/" class="project-link">
                   <i class="fas fa-external-link-alt"></i> Live Demo
                 </a>
               </div>
@@ -500,25 +473,25 @@
           <!-- Project 3 - Placeholder for new project -->
           <div class="project-card" data-category="other">
             <div class="project-image">
-              <img src="project3.webp" alt="CanKey Project" loading="lazy" />
+              <img src="canva.png" alt="CanKey Project" loading="lazy" />
             </div>
             <div class="project-content">
               <h3>CanKey</h3>
               <p class="project-description">
-                An innovative tech-driven solution developed as part of
-                coursework, focusing on accessibility and user experience
-                through thoughtful design.
+                CanKey offers smart, cap-based keychains that help you keep track of your keys easily.
+                 Our innovative design blends functionality with style for everyday convenience.
+                  We aim to simplify your life with smart, reliable solutions.
               </p>
               <div class="project-tech">
-                <span class="tech-tag">Python</span>
-                <span class="tech-tag">Flask</span>
-                <span class="tech-tag">SQLite</span>
+                <span class="tech-tag">Product Building</span>
+                <span class="tech-tag">Entrepreneurship</span>
+                <span class="tech-tag">Canva</span>
               </div>
               <div class="project-links">
-                <a href="#" class="project-link">
-                  <i class="fab fa-github"></i> Code
+                <a href="https://www.canva.com/design/DAGeJ19rGBM/7y7Z-RJHN-CAN9Iyh20ghQ/edit?utm_content=DAGeJ19rGBM&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" class="project-link">
+                    <i class="fab fa-canva"></i> Canva
                 </a>
-                <a href="#" class="project-link">
+                <a href="Cankey.jpg" class="project-link">
                   <i class="fas fa-external-link-alt"></i> Demo
                 </a>
               </div>
@@ -545,7 +518,7 @@
               <p class="certification-issuer">Infosys</p>
               <p class="certification-date">Completed: 2025</p>
               <a
-                href="https://1drv.ms/i/c/23b3820b5ade0789/Eaxbkyo7pwxNusMFxfNEKYIB9vZot16zhQSuCKE1_NdSXA?e=JooYpw"
+                href="bash scripting in Linux.png"
                 target="_blank"
                 class="btn small-btn"
               >
@@ -563,8 +536,7 @@
               <p class="certification-issuer">Infosys</p>
               <p class="certification-date">Completed: 2025</p>
               <a
-                href="https://1drv.ms/i/c/23b3820b5ade0789/Eb_oIZ1ioYxCloO9cNlGxMEB1knSiiZLAN2pEFnxGzu5cw?e=xDSx0y"
-                target="_blank"
+                href="os.png"
                 class="btn small-btn"
               >
                 View Certificate
@@ -581,7 +553,7 @@
               <p class="certification-issuer">IBM SkillsBuild</p>
               <p class="certification-date">Completed: 2025</p>
               <a
-                href="https://1drv.ms/i/c/23b3820b5ade0789/EXwLDjFPTztLgj0Apo_wKJkBWrcVnDvJh3SNZPwdLCETiw?e=sL5gbA"
+                href="ibm.jpg"
                 target="_blank"
                 class="btn small-btn"
               >
@@ -599,7 +571,7 @@
               <p class="certification-issuer">Infosys</p>
               <p class="certification-date">Completed: 2025</p>
               <a
-                href="https://1drv.ms/i/c/23b3820b5ade0789/ETB-z3gBLz1OsMVKkz-sfsoBZw4xWECqohQfocqEIuI8pQ?e=lhfecJ"
+                href="python fundamenrals.jpg"
                 target="_blank"
                 class="btn small-btn"
               >
@@ -627,11 +599,11 @@
             <div class="contact-methods">
               <div class="contact-item">
                 <i class="fas fa-envelope"></i>
-                <span>abhimanyu.kotari@example.com</span>
+                <span>abhimanyukotari6@example.com</span>
               </div>
               <div class="contact-item">
                 <i class="fas fa-phone"></i>
-                <span>+91 98765 43210</span>
+                <span>+91 95915 60751</span>
               </div>
               <div class="contact-item">
                 <i class="fas fa-map-marker-alt"></i>
@@ -669,45 +641,49 @@
               </a>
             </div>
           </div>
-          <form class="contact-form" id="contactForm" data-netlify="true">
-            <div class="form-group">
-              <input
-                type="text"
-                id="name"
-                name="name"
-                required
-                placeholder="Your Name"
-              />
-            </div>
-            <div class="form-group">
-              <input
-                type="email"
-                id="email"
-                name="email"
-                required
-                placeholder="Your Email"
-              />
-            </div>
-            <div class="form-group">
-              <input
-                type="text"
-                id="subject"
-                name="subject"
-                required
-                placeholder="Subject"
-              />
-            </div>
-            <div class="form-group">
-              <textarea
-                id="message"
-                name="message"
-                rows="5"
-                required
-                placeholder="Your Message"
-              ></textarea>
-            </div>
-            <button type="submit" class="btn primary-btn">Send Message</button>
-          </form>
+          <form name="contact" class="contact-form" id="contactForm" method="POST" data-netlify="true">
+  <!-- Netlify hidden input -->
+  <input type="hidden" name="form-name" value="contact" />
+
+  <div class="form-group">
+    <input
+      type="text"
+      id="name"
+      name="name"
+      required
+      placeholder="Your Name"
+    />
+  </div>
+  <div class="form-group">
+    <input
+      type="email"
+      id="email"
+      name="email"
+      required
+      placeholder="Your Email"
+    />
+  </div>
+  <div class="form-group">
+    <input
+      type="text"
+      id="subject"
+      name="subject"
+      required
+      placeholder="Subject"
+    />
+  </div>
+  <div class="form-group">
+    <textarea
+      id="message"
+      name="message"
+      rows="5"
+      required
+      placeholder="Your Message"
+    ></textarea>
+  </div>
+  <button type="submit" class="btn primary-btn">Send Message</button>
+</form>
+
         </div>
       </div>
     </section>
@@ -733,7 +709,7 @@
           <div class="footer-cta">
             <h4>Let's Work Together</h4>
             <a href="#contact" class="btn secondary-btn">Get In Touch</a>
-            <a href="#" class="btn small-btn" id="download-resume">
+            <a href="Abhimanyu Kotari- resume.pdf" class="btn small-btn" id="download-resume">
               <i class="fas fa-download"></i> Download Resume
             </a>
           </div>
