@@ -6,6 +6,26 @@
 class PortfolioEnhancer {
   constructor() {
     this.init();
+    // Handle browser back navigation
+    window.addEventListener("popstate", (event) => {
+      const targetId = event.state?.targetId;
+      if (targetId) {
+        const target = document.querySelector(targetId);
+        if (target) {
+          const headerHeight =
+            document.querySelector("header")?.offsetHeight || 0;
+          const targetPosition =
+            target.getBoundingClientRect().top +
+            window.pageYOffset -
+            headerHeight;
+
+          window.scrollTo({
+            top: targetPosition,
+            behavior: "smooth",
+          });
+        }
+      }
+    });
   }
 
   // Initialize all enhancements
@@ -44,7 +64,7 @@ class PortfolioEnhancer {
           });
 
           // Update URL without jumping
-          history.pushState(null, null, targetId);
+          history.pushState({ targetId }, null, targetId);
         }
       });
     });
@@ -61,7 +81,7 @@ class PortfolioEnhancer {
     const closeBtn = document.querySelector(".close");
 
     const openModal = () => {
-      modal.style.display = "block";
+      modal.style.display = "flex";
       modalImg.src = profilePic.src;
       captionText.textContent = profilePic.alt;
       document.body.style.overflow = "hidden";
@@ -195,7 +215,7 @@ class PortfolioEnhancer {
     }
   }
 
-  // 6. Enhanced contact form with validation
+  // 6. Enhanced contact form with validation (now includes subject)
   setupContactForm() {
     const contactForm = document.querySelector(".contact-form");
     if (!contactForm) return;
@@ -204,6 +224,7 @@ class PortfolioEnhancer {
       let isValid = true;
       const nameInput = contactForm.querySelector('input[name="name"]');
       const emailInput = contactForm.querySelector('input[name="email"]');
+      const subjectInput = contactForm.querySelector('input[name="subject"]');
       const messageInput = contactForm.querySelector(
         'textarea[name="message"]'
       );
@@ -224,6 +245,13 @@ class PortfolioEnhancer {
         emailInput.classList.add("error");
       } else {
         emailInput.classList.remove("error");
+      }
+
+      if (!subjectInput.value.trim()) {
+        isValid = false;
+        subjectInput.classList.add("error");
+      } else {
+        subjectInput.classList.remove("error");
       }
 
       if (!messageInput.value.trim()) {
@@ -279,13 +307,10 @@ class PortfolioEnhancer {
     });
   }
 
-  // 7. Theme toggle with system preference detection
+  // 7. Theme toggle with system preference detection (uses #theme-toggle from HTML)
   setupThemeToggle() {
-    const modeToggle = document.createElement("button");
-    modeToggle.className = "mode-toggle";
-    modeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-    modeToggle.setAttribute("aria-label", "Toggle dark mode");
-    document.body.appendChild(modeToggle);
+    const modeToggle = document.getElementById("theme-toggle");
+    if (!modeToggle) return;
 
     const getPreferredTheme = () => {
       const storedTheme = localStorage.getItem("theme");
@@ -322,14 +347,11 @@ class PortfolioEnhancer {
     });
   }
 
-  // 8. Copyright year update
+  // 8. Copyright year update (uses #year)
   setupCopyrightYear() {
-    const copyrightElement = document.querySelector(".copyright");
-    if (copyrightElement) {
-      copyrightElement.textContent = `© ${new Date().getFullYear()} ${
-        copyrightElement.textContent.match(/© \d{4} (.*)/)?.[1] ||
-        "All rights reserved."
-      }`;
+    const yearElement = document.getElementById("year");
+    if (yearElement) {
+      yearElement.textContent = new Date().getFullYear();
     }
   }
 

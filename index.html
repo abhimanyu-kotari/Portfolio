@@ -34,30 +34,46 @@
     <nav class="navbar">
       <div class="container nav-container">
         <a href="#" class="logo">Abhimanyu Kotari</a>
-        <ul class="nav-links">
+
+        <!-- Mobile menu button -->
+        <button class="hamburger" aria-expanded="false" aria-label="Menu">
+          <span class="hamburger-box">
+            <!-- This span is styled to create the hamburger menu icon -->
+            <span class="hamburger-inner"></span>
+          </span>
+        </button>
+
+        <ul class="nav-links" id="nav-links">
           <li>
-            <a href="#about"><i class="fas fa-user"></i> About</a>
+            <a href="#about">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm4-3a4 4 0 1 1-8 0 4 4 0 0 1 8 0zM8 9a6 6 0 0 0-6 6v1h12v-1a6 6 0 0 0-6-6zm-5 6a5 5 0 0 1 10 0H3z"/>
+              </svg>
+              <span>About</span>
+            </a>
           </li>
           <li>
             <a href="#experience"
-              ><i class="fas fa-briefcase"></i> Experience</a
+              ><i class="fas fa-briefcase"></i> <span>Experience</span></a
             >
           </li>
           <li>
-            <a href="#projects"><i class="fas fa-code"></i> Projects</a>
+            <a href="#projects"
+              ><i class="fas fa-code"></i> <span>Projects</span></a
+            >
           </li>
           <li>
             <a href="#certifications"
-              ><i class="fas fa-certificate"></i> Certifications</a
+              ><i class="fas fa-certificate"></i> <span>Certifications</span></a
             >
           </li>
           <li>
-            <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
+            <a href="#contact"
+              ><i class="fas fa-envelope"></i> <span>Contact</span></a
+            >
           </li>
         </ul>
-        <div class="hamburger">
-          <i class="fas fa-bars"></i>
-        </div>
+
         <button
           id="theme-toggle"
           class="theme-toggle"
@@ -96,12 +112,58 @@
         </div>
       </div>
     </header>
-
+    <!-- Profile Image Modal -->
+    <div
+      id="photoModal"
+      class="modal"
+      tabindex="-1"
+      style="
+        display: none;
+        position: fixed;
+        z-index: 2000;
+        left: 0;
+        top: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.8);
+        align-items: center;
+        justify-content: center;
+      "
+    >
+      <span
+        class="close"
+        style="
+          position: absolute;
+          top: 2rem;
+          right: 2rem;
+          font-size: 2rem;
+          color: #fff;
+          cursor: pointer;
+        "
+        tabindex="0"
+        >&times;</span
+      >
+      <img
+        class="modal-content"
+        id="modalImage"
+        style="
+          max-width: 90vw;
+          max-height: 80vh;
+          display: block;
+          margin: auto;
+          border-radius: 12px;
+        "
+      />
+      <div
+        id="caption"
+        style="color: #fff; text-align: center; margin-top: 1rem"
+      ></div>
+    </div>
     <!-- About Section -->
     <section id="about" class="section">
       <div class="container">
         <h2 class="section-title"><i class="fas fa-user"></i> About Me</h2>
-        <div class="about-content">
+        <div class="about-content"></div>
           <div class="about-text">
             <p class="intro-text">
               I'm an 18-year-old BSc (Hons) Data Science student at RV
@@ -134,7 +196,7 @@
             </div>
           </div>
 
-          <div class="skills">
+          <div class="skills" style="margin-top:2.5rem;"></div>
             <h3><i class="fas fa-cogs"></i> My Skills</h3>
             <div class="skills-container">
               <div class="skill-category">
@@ -227,11 +289,102 @@
                 </div>
               </div>
             </div>
+            <!-- Skills Wave Animation -->
+            <div class="skill-items-container" style="margin-top: 2rem">
+              <div
+                class="skill-items-wave"
+                id="skillsWave"
+                style="
+                  white-space: nowrap;
+                  overflow: hidden;
+                  height: 48px;
+                  position: relative;
+                "
+              ></div>
+            </div>
           </div>
         </div>
       </div>
+      <style>
+        .skill-wave-item {
+          display: inline-block;
+          margin-right: 2.5rem;
+          font-size: 1.3rem;
+          font-weight: 600;
+          color: #4f8cff;
+          animation: waveMove 6s linear infinite;
+          position: relative;
+        }
+        @keyframes waveMove {
+          0% {
+            transform: translateY(0) translateX(-120%);
+          }
+          10% {
+            transform: translateY(-12px) translateX(-100%);
+          }
+          20% {
+            transform: translateY(0) translateX(-80%);
+          }
+          30% {
+            transform: translateY(12px) translateX(-60%);
+          }
+          40% {
+            transform: translateY(0) translateX(-40%);
+          }
+          50% {
+            transform: translateY(-12px) translateX(-20%);
+          }
+          60% {
+            transform: translateY(0) translateX(0%);
+          }
+          70% {
+            transform: translateY(12px) translateX(20%);
+          }
+          80% {
+            transform: translateY(0) translateX(40%);
+          }
+          90% {
+            transform: translateY(-12px) translateX(60%);
+          }
+          100% {
+            transform: translateY(0) translateX(120%);
+          }
+        }
+      </style>
+      <style>
+        .hidden {
+          display: none !important;
+        }
+      </style>
+      <script>
+        // Skills for the wave animation
+        const skills = [
+          "Python",
+          "JavaScript",
+          "C/C++",
+          "HTML5",
+          "CSS3",
+          "SQL",
+          "Git",
+          "Linux",
+          "Docker",
+          "Flask",
+          "Pandas",
+          "React",
+        ];
+        const skillsWave = document.getElementById("skillsWave");
+        // Clear previous content
+        skillsWave.innerHTML = "";
+        // Add each skill as a wave item, with animation delay for wave effect
+        skills.forEach((skill, idx) => {
+          const span = document.createElement("span");
+          span.className = "skill-wave-item";
+          span.textContent = skill;
+          span.style.animationDelay = `${idx * 0.4}s`;
+          skillsWave.appendChild(span);
+        });
+      </script>
     </section>
-
     <!-- Experience Section -->
     <section id="experience" class="section">
       <div class="container">
@@ -299,7 +452,7 @@
               </div>
               <div class="project-links">
                 <a
-                  href="https://github.com/abhimanyu-kotari/sem-_python.git"
+                  href="https://github.com/abhimanyu-kotari/loan-insights.git"
                   target="_blank"
                   class="project-link"
                 >
@@ -331,7 +484,7 @@
               </div>
               <div class="project-links">
                 <a
-                  href="https://github.com/abhimanyu-kotari/Git.git"
+                  href="https://github.com/abhimanyu-kotari/portfolio-website"
                   target="_blank"
                   class="project-link"
                 >
@@ -474,11 +627,11 @@
             <div class="contact-methods">
               <div class="contact-item">
                 <i class="fas fa-envelope"></i>
-                <span>your.email@example.com</span>
+                <span>abhimanyu.kotari@example.com</span>
               </div>
               <div class="contact-item">
                 <i class="fas fa-phone"></i>
-                <span>+91 XXXXX XXXXX</span>
+                <span>+91 98765 43210</span>
               </div>
               <div class="contact-item">
                 <i class="fas fa-map-marker-alt"></i>
@@ -516,7 +669,7 @@
               </a>
             </div>
           </div>
-          <form class="contact-form" id="contactForm" netlify>
+          <form class="contact-form" id="contactForm" data-netlify="true">
             <div class="form-group">
               <input
                 type="text"
@@ -595,7 +748,6 @@
               <i class="fas fa-arrow-up"></i>
             </a>
           </div>
-        </div>
       </div>
     </footer>
 
@@ -604,12 +756,12 @@
     <script src="script.js"></script>
     <script>
       // Update copyright year automatically
-      document.getElementById("year").textContent = new Date().getFullYear();
+      document.getElementById("year").innerHTML = new Date().getFullYear();
 
       // Simple theme toggle functionality
       const themeToggle = document.getElementById("theme-toggle");
       themeToggle.addEventListener("click", () => {
-        document.body.classList.toggle("dark-theme");
+        document.documentElement.classList.toggle("dark-theme");
         const icon = themeToggle.querySelector("i");
         if (document.body.classList.contains("dark-theme")) {
           icon.classList.replace("fa-moon", "fa-sun");
@@ -635,9 +787,9 @@
               filterValue === "all" ||
               project.getAttribute("data-category") === filterValue
             ) {
-              project.style.display = "block";
+              project.classList.remove("hidden");
             } else {
-              project.style.display = "none";
+              project.classList.add("hidden");
             }
           });
         });
