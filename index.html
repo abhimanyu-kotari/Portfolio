@@ -3,16 +3,31 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Abhimanyu Kotari - Portfolio</title>
-    <link rel="stylesheet" href="style.css" />
+    <meta
+      name="description"
+      content="Abhimanyu Kotari - Full Stack Developer and Data Science Student Portfolio"
+    />
+    <meta
+      name="keywords"
+      content="portfolio, data science, full stack developer, python, javascript"
+    />
+    <title>Abhimanyu Kotari - Full Stack Developer & Data Scientist</title>
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap"
       rel="stylesheet"
     />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
   </head>
   <body>
     <!-- Navigation -->
@@ -24,6 +39,11 @@
             <a href="#about"><i class="fas fa-user"></i> About</a>
           </li>
           <li>
+            <a href="#experience"
+              ><i class="fas fa-briefcase"></i> Experience</a
+            >
+          </li>
+          <li>
             <a href="#projects"><i class="fas fa-code"></i> Projects</a>
           </li>
           <li>
@@ -31,126 +51,212 @@
               ><i class="fas fa-certificate"></i> Certifications</a
             >
           </li>
+          <li>
+            <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
+          </li>
         </ul>
         <div class="hamburger">
           <i class="fas fa-bars"></i>
         </div>
+        <button
+          id="theme-toggle"
+          class="theme-toggle"
+          aria-label="Toggle dark mode"
+        >
+          <i class="fas fa-moon"></i>
+        </button>
       </div>
     </nav>
 
     <!-- Hero Section -->
     <header class="hero" id="top">
-      <div class="container">
-        <div class="profile-container">
-          <img src="myphoto.jpg" alt="Abhimanyu Kotari" class="profile-pic" />
-          <!-- <div class="tech-icons">
-            <i class="fab fa-html5" title="HTML5"></i>
-            <i class="fab fa-css3-alt" title="CSS3"></i>
-            <i class="fab fa-js" title="JavaScript"></i>
-            <i class="fab fa-python" title="Python"></i>
-            <i class="fas fa-database" title="Database"></i>
-          </div> -->
+      <div class="container animate__animated animate__fadeIn">
+        <div class="hero-content">
+          <div class="hero-text">
+            <h1>Hello, I'm <span class="highlight">Abhimanyu Kotari</span></h1>
+            <p class="subtitle">
+              Full Stack Developer | Data Science Student | Tech Enthusiast
+            </p>
+            <p class="hero-description">
+              Turning complex problems into elegant, data-driven solutions
+            </p>
+            <div class="hero-buttons">
+              <a href="#projects" class="btn primary-btn">View My Work</a>
+              <a href="#contact" class="btn secondary-btn">Contact Me</a>
+            </div>
+          </div>
+          <div class="profile-container">
+            <img
+              src="myphoto.jpg"
+              alt="Abhimanyu Kotari"
+              class="profile-pic"
+              loading="lazy"
+            />
+          </div>
         </div>
-        <h1>Hello, I'm <span class="highlight">Abhimanyu Kotari</span></h1>
-        <p class="subtitle">
-          Full Stack Developer | Data Science Student | Aspiring Entrepreneur
-        </p>
       </div>
     </header>
 
     <!-- About Section -->
     <section id="about" class="section">
       <div class="container">
-        <h2><i class="fas fa-user"></i> About Me</h2>
+        <h2 class="section-title"><i class="fas fa-user"></i> About Me</h2>
         <div class="about-content">
           <div class="about-text">
-            <p>
+            <p class="intro-text">
               I'm an 18-year-old BSc (Hons) Data Science student at RV
-              University, passionate about solving real-world problems by
-              combining data, clean code, and thoughtful design.
+              University, passionate about building solutions that bridge the
+              gap between data and real-world applications.
             </p>
-            <p>
-              I'm currently interning in a professional setting where I'm
-              gaining hands-on experience in DevOps and software development,
-              which is helping me build strong practical skills alongside my
-              academic learning.
-            </p>
-            <p>
-              As part of my coursework, I developed <strong>CanKey</strong>, a
-              project focused on creating innovative, tech-driven solutions.
-              This experience sharpened my abilities in project planning,
-              coding, and product development within a collaborative
-              environment.
-            </p>
+
+            <div class="education">
+              <h3><i class="fas fa-graduation-cap"></i> Education</h3>
+              <div class="timeline-item">
+                <h4>BSc (Hons) Data Science</h4>
+                <p class="timeline-meta">
+                  RV University | 2023 - 2026 (Expected)
+                </p>
+                <p>
+                  Coursework includes Machine Learning, Statistical Analysis,
+                  and Big Data Technologies
+                </p>
+              </div>
+            </div>
+
+            <div class="professional-summary">
+              <h3><i class="fas fa-lightbulb"></i> What I Do</h3>
+              <p>
+                I specialize in creating full-stack applications with clean,
+                efficient code and data-driven backends. Currently interning in
+                a professional DevOps environment, I'm gaining hands-on
+                experience with cloud technologies and CI/CD pipelines.
+              </p>
+            </div>
           </div>
 
           <div class="skills">
-            <h3>My Skills</h3>
-            <div class="skills-wave">
-              <div class="wave-row">
-                <div class="skill-item">
-                  <i class="fab fa-python"></i>
-                  <span>Python</span>
-                </div>
-                <div class="skill-item">
-                  <i class="fas fa-database"></i>
-                  <span>SQL</span>
-                </div>
-                <div class="skill-item">
-                  <i class="fab fa-js"></i>
-                  <span>JavaScript</span>
-                </div>
-              </div>
-              <div class="wave-row reverse">
-                <div class="skill-item">
-                  <i class="fab fa-html5"></i>
-                  <span>HTML5</span>
-                </div>
-                <div class="skill-item">
-                  <i class="fab fa-css3-alt"></i>
-                  <span>CSS3</span>
-                </div>
-                <div class="skill-item">
-                  <i class="fab fa-git-alt"></i>
-                  <span>Git</span>
-                </div>
-                <div class="skill-item">
-                  <i class="fab fa-github"></i>
-                  <span>GitHub</span>
-                </div>
-              </div>
-              <div class="wave-row">
-                <div class="skill-item">
-                  <i class="fab fa-microsoft"></i>
-                  <span>PowerPoint</span>
-                </div>
-                <div class="skill-item">
-                  <i class="fas fa-code"></i>
-                  <span>C</span>
-                </div>
-                <div class="skill-item">
-                  <i class="fas fa-code"></i>
-                  <span>C++</span>
-                </div>
-                <div class="skill-item">
-                  <i class="fab fa-linux"></i>
-                  <span>Linux</span>
+            <h3><i class="fas fa-cogs"></i> My Skills</h3>
+            <div class="skills-container">
+              <div class="skill-category">
+                <h4>Languages</h4>
+                <div class="skills-grid">
+                  <div class="skill-item">
+                    <div class="skill-info">
+                      <i class="fab fa-python"></i>
+                      <span>Python</span>
+                    </div>
+                    <div class="skill-bar">
+                      <div class="skill-level" style="width: 85%"></div>
+                    </div>
+                  </div>
+                  <div class="skill-item">
+                    <div class="skill-info">
+                      <i class="fab fa-js"></i>
+                      <span>JavaScript</span>
+                    </div>
+                    <div class="skill-bar">
+                      <div class="skill-level" style="width: 75%"></div>
+                    </div>
+                  </div>
+                  <div class="skill-item">
+                    <div class="skill-info">
+                      <i class="fas fa-code"></i>
+                      <span>C/C++</span>
+                    </div>
+                    <div class="skill-bar">
+                      <div class="skill-level" style="width: 70%"></div>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div class="wave-row reverse">
-                <div class="skill-item">
-                  <i class="fas fa-palette"></i>
-                  <span>Canva</span>
-                </div>
-                <div class="skill-item">
-                  <i class="fas fa-robot"></i>
-                  <span>AI Tools</span>
-                </div>
-                <div class="skill-item">
-                  <i class="fas fa-comment-alt"></i>
-                  <span>ChatGPT</span>
+
+              <div class="skill-category">
+                <h4>Web Development</h4>
+                <div class="skills-grid">
+                  <div class="skill-item">
+                    <div class="skill-info">
+                      <i class="fab fa-html5"></i>
+                      <span>HTML5</span>
+                    </div>
+                    <div class="skill-bar">
+                      <div class="skill-level" style="width: 90%"></div>
+                    </div>
+                  </div>
+                  <div class="skill-item">
+                    <div class="skill-info">
+                      <i class="fab fa-css3-alt"></i>
+                      <span>CSS3</span>
+                    </div>
+                    <div class="skill-bar">
+                      <div class="skill-level" style="width: 85%"></div>
+                    </div>
+                  </div>
                 </div>
               </div>
+
+              <div class="skill-category">
+                <h4>Tools & Technologies</h4>
+                <div class="skills-grid">
+                  <div class="skill-item">
+                    <div class="skill-info">
+                      <i class="fas fa-database"></i>
+                      <span>SQL</span>
+                    </div>
+                    <div class="skill-bar">
+                      <div class="skill-level" style="width: 80%"></div>
+                    </div>
+                  </div>
+                  <div class="skill-item">
+                    <div class="skill-info">
+                      <i class="fab fa-git-alt"></i>
+                      <span>Git</span>
+                    </div>
+                    <div class="skill-bar">
+                      <div class="skill-level" style="width: 75%"></div>
+                    </div>
+                  </div>
+                  <div class="skill-item">
+                    <div class="skill-info">
+                      <i class="fab fa-linux"></i>
+                      <span>Linux</span>
+                    </div>
+                    <div class="skill-bar">
+                      <div class="skill-level" style="width: 70%"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section">
+      <div class="container">
+        <h2 class="section-title">
+          <i class="fas fa-briefcase"></i> Experience
+        </h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-icon">
+              <i class="fas fa-laptop-code"></i>
+            </div>
+            <div class="timeline-content">
+              <h3>DevOps Intern</h3>
+              <div class="timeline-meta">
+                <span class="company">Company Name</span>
+                <span class="date">2024 - Present</span>
+              </div>
+              <ul class="timeline-description">
+                <li>Assisting in CI/CD pipeline development and maintenance</li>
+                <li>Working with containerization technologies like Docker</li>
+                <li>Participating in cloud infrastructure management</li>
+                <li>
+                  Collaborating with development teams on deployment strategies
+                </li>
+              </ul>
             </div>
           </div>
         </div>
@@ -160,58 +266,111 @@
     <!-- Projects Section -->
     <section id="projects" class="section">
       <div class="container">
-        <h2><i class="fas fa-code"></i> My Projects</h2>
-        <div class="horizontal-scroll">
-          <div class="scroll-container">
-            <div class="card">
-              <a
-                href="https://github.com/abhimanyu-kotari/sem-_python.git"
-                target="_blank"
-              >
-                <div class="card-icon">
-                  <i class="fas fa-chart-line"></i>
-                </div>
-                <h3>Loan Insights</h3>
-                <p>
-                  A Python-based exploratory data analysis (EDA) project on a
-                  bank loan dataset that uncovers key factors influencing
-                  personal loan approvals using visualizations and statistical
-                  insights.
-                </p>
-                <div class="tech-tags">
-                  <span class="tag">Python</span>
-                  <span class="tag">Pandas</span>
-                  <span class="tag">Matplotlib</span>
-                </div>
-              </a>
+        <h2 class="section-title"><i class="fas fa-code"></i> My Projects</h2>
+
+        <div class="project-filters">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="data">Data Science</button>
+          <button class="filter-btn" data-filter="web">Web Development</button>
+          <button class="filter-btn" data-filter="other">Other</button>
+        </div>
+
+        <div class="projects-grid">
+          <!-- Project 1 -->
+          <div class="project-card" data-category="data">
+            <div class="project-image">
+              <img
+                src="project1.webp"
+                alt="Loan Insights Project"
+                loading="lazy"
+              />
             </div>
-            <div class="card">
-              <a
-                href="https://github.com/abhimanyu-kotari/Git.git"
-                target="_blank"
-              >
-                <div class="card-icon">
-                  <i class="fas fa-laptop-code"></i>
-                </div>
-                <h3>Portfolio Website</h3>
-                <p>
-                  Built an interactive portfolio website using HTML, CSS, and
-                  JavaScript to showcase my data analysis projects, including a
-                  detailed exploratory analysis of bank loan data.
-                </p>
-                <div class="tech-tags">
-                  <span class="tag">HTML</span>
-                  <span class="tag">CSS</span>
-                  <span class="tag">JavaScript</span>
-                </div>
-              </a>
+            <div class="project-content">
+              <h3>Loan Insights</h3>
+              <p class="project-description">
+                A Python-based exploratory data analysis (EDA) project on bank
+                loan data that uncovers key factors influencing personal loan
+                approvals using statistical analysis and visualizations.
+              </p>
+              <div class="project-tech">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">Pandas</span>
+                <span class="tech-tag">Matplotlib</span>
+              </div>
+              <div class="project-links">
+                <a
+                  href="https://github.com/abhimanyu-kotari/sem-_python.git"
+                  target="_blank"
+                  class="project-link"
+                >
+                  <i class="fab fa-github"></i> Code
+                </a>
+                <a href="#" class="project-link">
+                  <i class="fas fa-external-link-alt"></i> Live Demo
+                </a>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="section-footer">
-          <a href="#top" class="btn small"
-            ><i class="fas fa-arrow-up"></i> Back to Top</a
-          >
+
+          <!-- Project 2 -->
+          <div class="project-card" data-category="web">
+            <div class="project-image">
+              <img src="project2.webp" alt="Portfolio Website" loading="lazy" />
+            </div>
+            <div class="project-content">
+              <h3>Portfolio Website</h3>
+              <p class="project-description">
+                A responsive personal portfolio website built with modern HTML5,
+                CSS3, and JavaScript featuring dark/light mode, project
+                filtering, and animated elements.
+              </p>
+              <div class="project-tech">
+                <span class="tech-tag">HTML5</span>
+                <span class="tech-tag">CSS3</span>
+                <span class="tech-tag">JavaScript</span>
+              </div>
+              <div class="project-links">
+                <a
+                  href="https://github.com/abhimanyu-kotari/Git.git"
+                  target="_blank"
+                  class="project-link"
+                >
+                  <i class="fab fa-github"></i> Code
+                </a>
+                <a href="#" class="project-link">
+                  <i class="fas fa-external-link-alt"></i> Live Demo
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3 - Placeholder for new project -->
+          <div class="project-card" data-category="other">
+            <div class="project-image">
+              <img src="project3.webp" alt="CanKey Project" loading="lazy" />
+            </div>
+            <div class="project-content">
+              <h3>CanKey</h3>
+              <p class="project-description">
+                An innovative tech-driven solution developed as part of
+                coursework, focusing on accessibility and user experience
+                through thoughtful design.
+              </p>
+              <div class="project-tech">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">Flask</span>
+                <span class="tech-tag">SQLite</span>
+              </div>
+              <div class="project-links">
+                <a href="#" class="project-link">
+                  <i class="fab fa-github"></i> Code
+                </a>
+                <a href="#" class="project-link">
+                  <i class="fas fa-external-link-alt"></i> Demo
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -219,95 +378,183 @@
     <!-- Certifications Section -->
     <section id="certifications" class="section">
       <div class="container">
-        <h2><i class="fas fa-certificate"></i> Certifications</h2>
-        <div class="horizontal-scroll">
-          <div class="scroll-container">
-            <div class="card">
+        <h2 class="section-title">
+          <i class="fas fa-certificate"></i> Certifications
+        </h2>
+
+        <div class="certifications-grid">
+          <div class="certification-card">
+            <div class="certification-header">
+              <i class="fas fa-terminal"></i>
+              <h3>Bash Scripting in Linux</h3>
+            </div>
+            <div class="certification-body">
+              <p class="certification-issuer">Infosys</p>
+              <p class="certification-date">Completed: 2025</p>
               <a
                 href="https://1drv.ms/i/c/23b3820b5ade0789/Eaxbkyo7pwxNusMFxfNEKYIB9vZot16zhQSuCKE1_NdSXA?e=JooYpw"
                 target="_blank"
+                class="btn small-btn"
               >
-                <div class="card-icon">
-                  <i class="fas fa-terminal"></i>
-                </div>
-                <h3>Bash Scripting in Linux</h3>
-                <p>
-                  Successfully completed course on Linux bash scripting, awarded
-                  by Infosys.
-                </p>
-                <div class="cert-date">Completed: 2025</div>
+                View Certificate
               </a>
             </div>
-            <div class="card">
+          </div>
+
+          <div class="certification-card">
+            <div class="certification-header">
+              <i class="fas fa-desktop"></i>
+              <h3>CompTIA IT Fundamentals: OS</h3>
+            </div>
+            <div class="certification-body">
+              <p class="certification-issuer">Infosys</p>
+              <p class="certification-date">Completed: 2025</p>
               <a
                 href="https://1drv.ms/i/c/23b3820b5ade0789/Eb_oIZ1ioYxCloO9cNlGxMEB1knSiiZLAN2pEFnxGzu5cw?e=xDSx0y"
                 target="_blank"
+                class="btn small-btn"
               >
-                <div class="card-icon">
-                  <i class="fas fa-desktop"></i>
-                </div>
-                <h3>CompTIA IT Fundamentals: Operating Systems</h3>
-                <p>
-                  Successfully completed course on CompTIA IT
-                  Fundamentals:Operating Systems, awarded by Infosys.
-                </p>
-                <div class="cert-date">Completed: 2025</div>
+                View Certificate
               </a>
             </div>
-            <div class="card">
+          </div>
+
+          <div class="certification-card">
+            <div class="certification-header">
+              <i class="fas fa-robot"></i>
+              <h3>Generative AI for Dev</h3>
+            </div>
+            <div class="certification-body">
+              <p class="certification-issuer">IBM SkillsBuild</p>
+              <p class="certification-date">Completed: 2025</p>
               <a
                 href="https://1drv.ms/i/c/23b3820b5ade0789/EXwLDjFPTztLgj0Apo_wKJkBWrcVnDvJh3SNZPwdLCETiw?e=sL5gbA"
                 target="_blank"
+                class="btn small-btn"
               >
-                <div class="card-icon">
-                  <i class="fas fa-robot"></i>
-                </div>
-                <h3>Use Generative AI for Software Development</h3>
-                <p>
-                  Successfully completed course on Use Generative AI for
-                  Software Development, awarded by IBM SkillsBuild.
-                </p>
-                <div class="cert-date">Completed: 2025</div>
+                View Certificate
               </a>
             </div>
-            <div class="card">
+          </div>
+
+          <div class="certification-card">
+            <div class="certification-header">
+              <i class="fab fa-python"></i>
+              <h3>Python Fundamentals</h3>
+            </div>
+            <div class="certification-body">
+              <p class="certification-issuer">Infosys</p>
+              <p class="certification-date">Completed: 2025</p>
               <a
                 href="https://1drv.ms/i/c/23b3820b5ade0789/ETB-z3gBLz1OsMVKkz-sfsoBZw4xWECqohQfocqEIuI8pQ?e=lhfecJ"
                 target="_blank"
+                class="btn small-btn"
               >
-                <div class="card-icon">
-                  <i class="fab fa-python"></i>
-                </div>
-                <h3>Python Fundamentals</h3>
-                <p>
-                  Successfully completed course on Python Fundamentals, awarded
-                  by Infosys.
-                </p>
-                <div class="cert-date">Completed: 2025</div>
-              </a>
-            </div>
-            <div class="card">
-              <a
-                href="https://1drv.ms/i/c/23b3820b5ade0789/ESJ8C8-siFNPpdMvMwLJz5kB3P8jOWZ2ng8wUdjpeBHT1A?e=q5iq8E"
-                target="_blank"
-              >
-                <div class="card-icon">
-                  <i class="fas fa-brain"></i>
-                </div>
-                <h3>AI Tools Workshop</h3>
-                <p>
-                  Successfully completed course on AI Tools Workshop, awarded by
-                  Infosys.
-                </p>
-                <div class="cert-date">Completed: 2025</div>
+                View Certificate
               </a>
             </div>
           </div>
         </div>
-        <div class="section-footer">
-          <a href="#top" class="btn small"
-            ><i class="fas fa-arrow-up"></i> Back to Top</a
-          >
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+      <div class="container">
+        <h2 class="section-title">
+          <i class="fas fa-envelope"></i> Get In Touch
+        </h2>
+        <div class="contact-container">
+          <div class="contact-info">
+            <h3>Let's Connect</h3>
+            <p>
+              I'm currently looking for new opportunities and would love to hear
+              from you!
+            </p>
+            <div class="contact-methods">
+              <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <span>your.email@example.com</span>
+              </div>
+              <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <span>+91 XXXXX XXXXX</span>
+              </div>
+              <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Bangalore, India</span>
+              </div>
+            </div>
+            <div class="social-links">
+              <a
+                href="https://github.com/abhimanyu-kotari"
+                target="_blank"
+                aria-label="GitHub"
+              >
+                <i class="fab fa-github"></i>
+              </a>
+              <a
+                href="https://www.linkedin.com/in/abhimanyu-kotari"
+                target="_blank"
+                aria-label="LinkedIn"
+              >
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+              <a
+                href="https://twitter.com/abhimanyu_kotari"
+                target="_blank"
+                aria-label="Twitter"
+              >
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a
+                href="https://www.instagram.com/abhimanyu_kotari/"
+                target="_blank"
+                aria-label="Instagram"
+              >
+                <i class="fab fa-instagram"></i>
+              </a>
+            </div>
+          </div>
+          <form class="contact-form" id="contactForm" netlify>
+            <div class="form-group">
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                placeholder="Your Name"
+              />
+            </div>
+            <div class="form-group">
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                placeholder="Your Email"
+              />
+            </div>
+            <div class="form-group">
+              <input
+                type="text"
+                id="subject"
+                name="subject"
+                required
+                placeholder="Subject"
+              />
+            </div>
+            <div class="form-group">
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                required
+                placeholder="Your Message"
+              ></textarea>
+            </div>
+            <button type="submit" class="btn primary-btn">Send Message</button>
+          </form>
         </div>
       </div>
     </section>
@@ -315,31 +562,86 @@
     <!-- Footer -->
     <footer>
       <div class="container">
-        <div class="social-links">
-          <a href="https://github.com/abhimanyu-kotari" target="_blank"
-            ><i class="fab fa-github"></i
-          ></a>
-          <a href="https://www.linkedin.com/in/abhimanyu-kotari" target="_blank"
-            ><i class="fab fa-linkedin"></i
-          ></a>
-          <a href="https://www.instagram.com/abhimanyu_kotari/" target="_blank"
-            ><i class="fab fa-instagram"></i
-          ></a>
-          <a href="https://www.fa-twitter.com/abhimanyu_kotari/" target="_blank"
-            ><i class="fab fa-twitter"></i
-          ></a>
+        <div class="footer-content">
+          <div class="footer-logo">
+            <a href="#" class="logo">Abhimanyu Kotari</a>
+            <p>Building digital solutions with data and design</p>
+          </div>
+          <div class="footer-links">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="#about">About</a></li>
+              <li><a href="#experience">Experience</a></li>
+              <li><a href="#projects">Projects</a></li>
+              <li><a href="#certifications">Certifications</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-cta">
+            <h4>Let's Work Together</h4>
+            <a href="#contact" class="btn secondary-btn">Get In Touch</a>
+            <a href="#" class="btn small-btn" id="download-resume">
+              <i class="fas fa-download"></i> Download Resume
+            </a>
+          </div>
         </div>
-        <p>© 2025 Abhimanyu Kotari. All rights reserved.</p>
+        <div class="footer-bottom">
+          <p>
+            &copy; <span id="year"></span> Abhimanyu Kotari. All rights
+            reserved.
+          </p>
+          <div class="back-to-top">
+            <a href="#top" aria-label="Back to top">
+              <i class="fas fa-arrow-up"></i>
+            </a>
+          </div>
+        </div>
       </div>
     </footer>
 
-    <!-- Modal for Profile Photo -->
-    <div id="photoModal" class="modal">
-      <span class="close">&times;</span>
-      <img class="modal-content" id="modalImage" alt="Profile Photo Enlarged" />
-      <div id="caption"></div>
-    </div>
-
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
     <script src="script.js"></script>
+    <script>
+      // Update copyright year automatically
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      // Simple theme toggle functionality
+      const themeToggle = document.getElementById("theme-toggle");
+      themeToggle.addEventListener("click", () => {
+        document.body.classList.toggle("dark-theme");
+        const icon = themeToggle.querySelector("i");
+        if (document.body.classList.contains("dark-theme")) {
+          icon.classList.replace("fa-moon", "fa-sun");
+        } else {
+          icon.classList.replace("fa-sun", "fa-moon");
+        }
+      });
+
+      // Project filtering
+      const filterButtons = document.querySelectorAll(".filter-btn");
+      filterButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          // Remove active class from all buttons
+          filterButtons.forEach((btn) => btn.classList.remove("active"));
+          // Add active class to clicked button
+          button.classList.add("active");
+
+          const filterValue = button.getAttribute("data-filter");
+          const projects = document.querySelectorAll(".project-card");
+
+          projects.forEach((project) => {
+            if (
+              filterValue === "all" ||
+              project.getAttribute("data-category") === filterValue
+            ) {
+              project.style.display = "block";
+            } else {
+              project.style.display = "none";
+            }
+          });
+        });
+      });
+    </script>
   </body>
 </html>
