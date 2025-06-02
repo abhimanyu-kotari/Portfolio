@@ -55,7 +55,11 @@ class PortfolioEnhancer {
             window.pageYOffset -
             headerHeight;
           window.scrollTo({ top: targetPosition, behavior: "smooth" });
-          history.pushState({ targetId }, "Smooth Scroll Target", targetId);
+          history.pushState(
+            { targetId },
+            "Smooth Scroll Target",
+            encodeURIComponent(targetId)
+          );
         }
       });
     });
@@ -195,31 +199,119 @@ class PortfolioEnhancer {
     }
   }
 
+  setupContactForm() {
+    const form = document.getElementById("contactForm");
+    if (!form) return;
+
+    // Create status message element
+    const statusDiv = document.createElement("div");
+    statusDiv.id = "form-status";
+    statusDiv.style.cssText = `
+      margin-top: 1rem;
+      padding: 0.75rem;
+      border-radius: 4px;
+      display: none;
+      font-weight: 500;
+    `;
+    form.appendChild(statusDiv);
+
+    const showStatus = (message, isError = false) => {
+      statusDiv.textContent = message;
+      statusDiv.style.display = "block";
+      statusDiv.style.backgroundColor = isError ? "#fee" : "#efe";
+      statusDiv.style.color = isError ? "#c33" : "#363";
+      statusDiv.style.border = `1px solid ${isError ? "#fcc" : "#cfc"}`;
+
+      // Auto-hide after 5 seconds
+      setTimeout(() => {
+        statusDiv.style.display = "none";
+      }, 5000);
+    };
+
+    const submitButton = form.querySelector('button[type="submit"]');
+    const originalButtonText = submitButton?.textContent || "Send Message";
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      // Show loading state
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = "Sending...";
+      }
+
+      statusDiv.style.display = "none";
+
+      try {
+        const formData = new FormData(form);
+
+        // Ensure form-name is included for Netlify
+        const formName = form.getAttribute("name") || "contact";
+        formData.set("form-name", formName);
+
+        const response = await fetch("/", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          body: new URLSearchParams(formData).toString(),
+        });
+
+        if (response.ok) {
+          form.reset();
+          showStatus("Thank you! Your message has been sent successfully.");
+        } else {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+      } catch (error) {
+        console.error("Form submission error:", error);
+        showStatus(
+          "Sorry, there was a problem sending your message. Please try again.",
+          true
+        );
+      } finally {
+        // Reset button state
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.textContent = originalButtonText;
+        }
+      }
+    });
+  }
+
   setupThemeToggle() {
     const modeToggle = document.getElementById("theme-toggle");
     if (!modeToggle) return;
 
     const getPreferredTheme = () => {
-      const storedTheme = localStorage.getItem("theme");
-      return (
-        storedTheme ||
-        (window.matchMedia("(prefers-color-scheme: light)").matches
+      try {
+        const storedTheme = localStorage.getItem("theme");
+        return (
+          storedTheme ||
+          (window.matchMedia("(prefers-color-scheme: light)").matches
+            ? "light"
+            : "dark")
+        );
+      } catch (error) {
+        console.warn("localStorage not available, using default theme");
+        return window.matchMedia("(prefers-color-scheme: light)").matches
           ? "light"
-          : "dark")
-      );
+          : "dark";
+      }
     };
 
     const setTheme = (theme) => {
       document.body.classList.toggle("light-mode", theme === "light");
       const icon = modeToggle.querySelector("i");
       if (icon) {
-        icon.classList.toggle("fa-moon", theme === "dark");
         icon.classList.toggle("fa-sun", theme === "light");
+        icon.classList.toggle("fa-moon", theme === "dark");
       }
+
       try {
         localStorage.setItem("theme", theme);
       } catch (error) {
-        console.error("Failed to save theme to localStorage:", error);
+        console.warn("Failed to save theme to localStorage:", error);
       }
     };
 
@@ -229,7 +321,11 @@ class PortfolioEnhancer {
       window
         .matchMedia("(prefers-color-scheme: light)")
         .addEventListener("change", (e) => {
-          if (!localStorage.getItem("theme")) {
+          try {
+            if (!localStorage.getItem("theme")) {
+              setTheme(e.matches ? "light" : "dark");
+            }
+          } catch (error) {
             setTheme(e.matches ? "light" : "dark");
           }
         });
@@ -263,6 +359,19 @@ class PortfolioEnhancer {
         bottom: 20px;
         right: 20px;
         z-index: 1000;
+        background: var(--primary-color, #007bff);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        cursor: pointer;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease;
+      }
+      .scroll-to-top:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
       }
       .scroll-to-top.visible {
         display: block;
@@ -337,47 +446,40 @@ class PortfolioEnhancer {
   }
 }
 
+// Initialize the portfolio enhancer when DOM is ready
 document.addEventListener("DOMContentLoaded", () => {
   try {
     new PortfolioEnhancer();
   } catch (error) {
     console.error("Error initializing PortfolioEnhancer:", error);
+
+    // Create user-friendly error message
     const errorMessage = document.createElement("div");
-    errorMessage.className = "error-message";
-    errorMessage.textContent =
-      "An error occurred while loading the portfolio enhancements. Please refresh the page or contact support.";
+    errorMessage.style.cssText = `
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #fee;
+      color: #c33;
+      padding: 1rem;
+      border-radius: 4px;
+      border: 1px solid #fcc;
+      max-width: 300px;
+      z-index: 10000;
+      font-family: Arial, sans-serif;
+    `;
+    errorMessage.innerHTML = `
+      <strong>Portfolio Error:</strong><br>
+      Some features may not work properly. Please refresh the page.
+      <button onclick="this.parentElement.remove()" style="float: right; margin-left: 10px; background: none; border: none; color: #c33; cursor: pointer;">×</button>
+    `;
     document.body.appendChild(errorMessage);
+
+    // Auto-remove error message after 10 seconds
+    setTimeout(() => {
+      if (errorMessage.parentElement) {
+        errorMessage.remove();
+      }
+    }, 10000);
   }
 });
-
-// contact form
-
-setupContactForm();
-{
-  const form = document.getElementById("contactForm");
-  if (!form) return;
-
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    const formData = new FormData(form);
-
-    // Netlify requires the form-name field in the POST body
-    if (!formData.has("form-name")) {
-      formData.append("form-name", form.getAttribute("name"));
-    }
-
-    try {
-      await fetch("/", {
-        method: "POST",
-        headers: { Accept: "application/json" },
-        body: new URLSearchParams(formData).toString(),
-      });
-
-      form.reset();
-      alert("Thank you! Your message has been sent.");
-    } catch (error) {
-      alert("Sorry, there was a problem submitting your form.");
-    }
-  });
-}
