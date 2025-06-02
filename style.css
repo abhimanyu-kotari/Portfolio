@@ -542,7 +542,9 @@ a:hover {
   display: flex;
   gap: var(--space-md);
 }
-
+.hidden {
+  display: none;
+}
 /* ===== Skills Section ===== */
 .skills-container {
   margin-top: var(--space-lg);

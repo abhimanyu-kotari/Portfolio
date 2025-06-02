@@ -226,19 +226,10 @@ class PortfolioEnhancer {
     };
 
     contactForm.addEventListener("submit", (e) => {
-      e.preventDefault(); // Always prevent default to handle submission via JS
-
       if (!validateForm()) {
-        // Show error or feedback if needed
-        return;
+        e.preventDefault(); // Only prevent if validation fails
       }
-
-      // Example: Show a success message (customize as needed)
-      contactForm.reset();
-      alert("Thank you for your message! We will get back to you soon.");
-
-      // If you want to send data via AJAX, add your fetch/XHR code here.
-      // If using Netlify Forms, ensure your form has the correct attributes in HTML.
+      // Otherwise, let Netlify handle the submission
     });
   }
 
