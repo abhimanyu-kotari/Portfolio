@@ -1,7 +1,3 @@
-/**
- * Portfolio Enhancement Script
- * Modular, performant, and accessible improvements to the portfolio
- */
 class PortfolioEnhancer {
   constructor() {
     this.ROOT_MARGIN = "0px 0px -50px 0px";
@@ -29,16 +25,46 @@ class PortfolioEnhancer {
   }
 
   init() {
-    this.setupSmoothScrolling();
-    this.setupProfileModal();
-    this.setupMobileNavigation();
-    this.setupScrollProgress();
-    this.setupIntersectionObserver();
-    this.setupContactForm();
-    this.setupThemeToggle();
-    this.setupCopyrightYear();
-    this.setupScrollToTop();
-    this.setupSkillsWave();
+    try {
+      this.setupSmoothScrolling();
+      this.setupProfileModal();
+      this.setupMobileNavigation();
+      this.setupScrollProgress();
+      this.setupIntersectionObserver();
+      this.setupContactForm();
+      this.setupThemeToggle();
+      this.setupCopyrightYear();
+      this.setupScrollToTop();
+    } catch (error) {
+      console.error("PortfolioEnhancer initialization failed:", error);
+      this.showErrorMessage();
+    }
+  }
+
+  showErrorMessage() {
+    const msg = document.createElement("div");
+    msg.textContent =
+      "⚠️ Some features failed to load. Please refresh the page.";
+    msg.style.cssText = `
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: #ffe5e5;
+      color: #b30000;
+      padding: 12px 16px;
+      border: 1px solid #ffcccc;
+      border-radius: 6px;
+      z-index: 9999;
+      font-family: sans-serif;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    `;
+    document.body.appendChild(msg);
+
+    setTimeout(() => {
+      if (msg.parentNode) {
+        msg.parentNode.removeChild(msg);
+      }
+    }, 8000);
   }
 
   setupSmoothScrolling() {
@@ -66,55 +92,93 @@ class PortfolioEnhancer {
   }
 
   setupProfileModal() {
+    console.log("Initializing profile modal..."); // Debug log
+
     const modal = document.getElementById("photoModal");
-    if (!modal) return;
+    if (!modal) {
+      console.error("Modal element (#photoModal) not found");
+      return;
+    }
+
+    // Debug: Log modal element
+    console.log("Modal element found:", modal);
+
+    // Reset modal state
     modal.classList.add("modal");
+    modal.classList.remove("visible");
+    modal.setAttribute("aria-hidden", "true");
 
     const modalImg = document.getElementById("modalImage");
     const captionText = document.getElementById("caption");
     const profilePic = document.querySelector(".profile-pic");
-    const closeBtn = document.querySelector(".close");
+    const closeBtn = modal.querySelector(".close"); // Scoped to modal
+
+    // Debug: Log all elements
+    console.log({
+      modalImg,
+      captionText,
+      profilePic,
+      closeBtn,
+    });
+
+    if (!modalImg || !captionText || !profilePic || !closeBtn) {
+      console.error("One or more required elements not found");
+      return;
+    }
 
     const openModal = () => {
+      console.log("Opening modal...");
       modal.classList.add("visible");
-      modalImg.src = profilePic.src;
-      captionText.textContent = profilePic.alt;
+      modal.setAttribute("aria-hidden", "false");
+      modalImg.src = profilePic.src || "";
+      captionText.textContent = profilePic.alt || "";
       document.body.style.overflow = "hidden";
       closeBtn.focus();
     };
 
     const closeModal = () => {
+      console.log("Closing modal...");
       modal.classList.remove("visible");
+      modal.setAttribute("aria-hidden", "true");
       document.body.style.overflow = "";
       profilePic.focus();
     };
 
-    if (profilePic) {
-      profilePic.addEventListener("click", openModal);
-      profilePic.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          openModal();
-        }
-      });
-    }
+    // Clean up any existing event listeners first
+    profilePic.replaceWith(profilePic.cloneNode(true));
+    closeBtn.replaceWith(closeBtn.cloneNode(true));
 
-    if (closeBtn) {
-      closeBtn.addEventListener("click", closeModal);
-      closeBtn.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") closeModal();
-      });
-    }
+    // Profile picture handlers
+    profilePic.addEventListener("click", openModal);
+    profilePic.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        openModal();
+      }
+    });
 
+    // Close button handlers
+    closeBtn.addEventListener("click", closeModal);
+    closeBtn.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeModal();
+    });
+
+    // Modal handlers
     modal.addEventListener("keydown", (e) => {
       if (e.key === "Escape") closeModal();
     });
 
-    window.addEventListener("click", (e) => {
-      if (e.target === modal) closeModal();
+    // Click outside to close
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) {
+        closeModal();
+      }
     });
-  }
 
+    // Debug: Test if handlers are working
+    console.log("Event listeners attached");
+    console.log("Profile pic clickable:", profilePic);
+  }
   setupMobileNavigation() {
     const hamburger = document.querySelector(".hamburger");
     const navLinks = document.querySelector(".nav-links");
@@ -256,7 +320,6 @@ class PortfolioEnhancer {
           },
           body: new URLSearchParams(formData).toString(),
         });
-
         if (response.ok) {
           form.reset();
           showStatus("Thank you! Your message has been sent successfully.");
@@ -399,87 +462,4 @@ class PortfolioEnhancer {
       scrollToTopBtn.blur();
     });
   }
-
-  setupSkillsWave() {
-    const skillsContainer = document.querySelector(".skill-items-container");
-    const skillsWave = document.querySelector(".skill-items-wave");
-    if (!skillsContainer || !skillsWave) return;
-
-    const skills = [
-      { name: "Python", icon: "fab fa-python" },
-      { name: "SQL", icon: "fas fa-database" },
-      { name: "JavaScript", icon: "fab fa-js" },
-      { name: "HTML5", icon: "fab fa-html5" },
-      { name: "CSS3", icon: "fab fa-css3-alt" },
-      { name: "Git", icon: "fab fa-git-alt" },
-      { name: "GitHub", icon: "fab fa-github" },
-      { name: "PowerPoint", icon: "fab fa-microsoft" },
-      { name: "C", icon: "fas fa-code" },
-      { name: "C++", icon: "fas fa-code" },
-      { name: "Linux", icon: "fab fa-linux" },
-      { name: "ChatGPT", icon: "fas fa-comment-alt" },
-    ];
-
-    const duration = skills.length * 2;
-    skillsWave.style.animationDuration = `${duration}s`;
-
-    skillsWave.innerHTML = [...skills, ...skills]
-      .map(
-        (skill) => `
-          <div class="skill-item" tabindex="0">
-            <i class="${skill.icon}" aria-hidden="true"></i>
-            <span>${skill.name}</span>
-          </div>
-        `
-      )
-      .join("");
-
-    const pauseAnimation = () =>
-      (skillsWave.style.animationPlayState = "paused");
-    const resumeAnimation = () =>
-      (skillsWave.style.animationPlayState = "running");
-
-    skillsWave.addEventListener("mouseenter", pauseAnimation);
-    skillsWave.addEventListener("mouseleave", resumeAnimation);
-    skillsWave.addEventListener("focusin", pauseAnimation);
-    skillsWave.addEventListener("focusout", resumeAnimation);
-  }
 }
-
-// Initialize the portfolio enhancer when DOM is ready
-document.addEventListener("DOMContentLoaded", () => {
-  try {
-    new PortfolioEnhancer();
-  } catch (error) {
-    console.error("Error initializing PortfolioEnhancer:", error);
-
-    // Create user-friendly error message
-    const errorMessage = document.createElement("div");
-    errorMessage.style.cssText = `
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: #fee;
-      color: #c33;
-      padding: 1rem;
-      border-radius: 4px;
-      border: 1px solid #fcc;
-      max-width: 300px;
-      z-index: 10000;
-      font-family: Arial, sans-serif;
-    `;
-    errorMessage.innerHTML = `
-      <strong>Portfolio Error:</strong><br>
-      Some features may not work properly. Please refresh the page.
-      <button onclick="this.parentElement.remove()" style="float: right; margin-left: 10px; background: none; border: none; color: #c33; cursor: pointer;">×</button>
-    `;
-    document.body.appendChild(errorMessage);
-
-    // Auto-remove error message after 10 seconds
-    setTimeout(() => {
-      if (errorMessage.parentElement) {
-        errorMessage.remove();
-      }
-    }, 10000);
-  }
-});

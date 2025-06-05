@@ -609,54 +609,6 @@ a:hover {
   background: var(--primary);
   border-radius: var(--radius-sm);
 }
-
-/* ===== Skills Wave Animation ===== */
-.skill-items-container {
-  overflow: hidden;
-  width: 100%;
-  margin: 2rem 0;
-}
-
-.skill-items-wave {
-  display: flex;
-  gap: 2rem;
-  animation: wave-scroll 28s linear infinite;
-  will-change: transform;
-  white-space: nowrap;
-  overflow: hidden;
-}
-
-@keyframes wave-scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-.skill-items-wave .skill-item {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-  background: var(--primary-light);
-  border: 1px solid var(--primary);
-  border-radius: var(--radius-md);
-  padding: 1rem;
-  min-width: 90px;
-  font-size: 1rem;
-  color: var(--primary);
-  margin-right: 1rem;
-  transition: background 0.2s;
-}
-
-.skill-items-wave .skill-item:focus,
-.skill-items-wave .skill-item:hover {
-  background: var(--primary);
-  color: var(--text-dark);
-  outline: none;
-}
 /* ===== Experience ===== */
 .timeline {
   position: relative;
