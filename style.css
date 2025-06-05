@@ -1301,12 +1301,17 @@ footer {
   align-items: center;
   justify-content: center;
 }
+.modal.visible {
+  display: flex;
+}
 .modal-content {
   max-width: 90vw;
   max-height: 80vh;
   display: block;
   margin: auto;
   border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  background: #222;
 }
 .close {
   position: absolute;
@@ -1316,7 +1321,18 @@ footer {
   color: #fff;
   cursor: pointer;
   z-index: 2001;
+  background: transparent;
+  border: none;
+  transition: color 0.2s;
 }
+.close:hover,
 .close:focus {
+  color: var(--primary);
   outline: 2px solid var(--primary);
+}
+#caption {
+  color: #fff;
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 1.1rem;
 }
