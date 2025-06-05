@@ -263,7 +263,8 @@
                 </div>
               </div>
             </div>
-           
+          
+       
     <!-- Experience Section -->
     <section id="experience" class="section">
       <div class="container">
@@ -663,46 +664,5 @@
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
     <script src="script.js"></script>
-    <script>
-      // Update copyright year automatically
-      document.getElementById("year").innerHTML = new Date().getFullYear();
-
-      // Simple theme toggle functionality
-      const themeToggle = document.getElementById("theme-toggle");
-      themeToggle.addEventListener("click", () => {
-        document.documentElement.classList.toggle("dark-theme");
-        const icon = themeToggle.querySelector("i");
-        if (document.body.classList.contains("dark-theme")) {
-          icon.classList.replace("fa-moon", "fa-sun");
-        } else {
-          icon.classList.replace("fa-sun", "fa-moon");
-        }
-      });
-
-      // Project filtering
-      const filterButtons = document.querySelectorAll(".filter-btn");
-      filterButtons.forEach((button) => {
-        button.addEventListener("click", () => {
-          // Remove active class from all buttons
-          filterButtons.forEach((btn) => btn.classList.remove("active"));
-          // Add active class to clicked button
-          button.classList.add("active");
-
-          const filterValue = button.getAttribute("data-filter");
-          const projects = document.querySelectorAll(".project-card");
-
-          projects.forEach((project) => {
-            if (
-              filterValue === "all" ||
-              project.getAttribute("data-category") === filterValue
-            ) {
-              project.classList.remove("hidden");
-            } else {
-              project.classList.add("hidden");
-            }
-          });
-        });
-      });
-    </script>
   </body>
-</html>
+  </html>

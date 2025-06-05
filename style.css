@@ -240,6 +240,7 @@ a:hover {
     top: 50%;
     transform: translateY(-50%);
     order: 2;
+    z-index: 2002; /* Ensure above nav-links */
   }
   .theme-toggle {
     position: absolute;
@@ -247,6 +248,7 @@ a:hover {
     top: 50%;
     transform: translateY(-50%);
     order: 3;
+    z-index: 2002; /* Ensure above nav-links */
   }
   .logo {
     margin: 0 auto 0 0;
@@ -265,9 +267,11 @@ a:hover {
     z-index: 1000;
     padding: var(--space-xl);
     order: 1;
+    pointer-events: none;
   }
   .nav-links.active {
     right: 0;
+    pointer-events: auto;
   }
 }
 
@@ -1108,30 +1112,10 @@ footer {
 }
 
 /* ===== Responsive Design ===== */
+/* Remove duplicate .nav-links and .menu-toggle rules to avoid conflicts.
+   Use only the earlier @media (max-width: 992px) block for .hamburger, .theme-toggle, and .nav-links positioning.
+   The rest of the responsive layout for hero/about/contact is kept below. */
 @media (max-width: 992px) {
-  .menu-toggle {
-    display: block;
-  }
-
-  .nav-links {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: min(300px, 80%);
-    height: 100vh;
-    background: var(--darker-bg);
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    transition: right var(--transition-normal);
-    z-index: 1000;
-    padding: var(--space-xl);
-  }
-
-  .nav-links.active {
-    right: 0;
-  }
-
   .hero-content,
   .about-content,
   .contact-container {

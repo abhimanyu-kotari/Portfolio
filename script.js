@@ -144,9 +144,7 @@ class PortfolioEnhancer {
       profilePic.focus();
     };
 
-    // Clean up any existing event listeners first
-    profilePic.replaceWith(profilePic.cloneNode(true));
-    closeBtn.replaceWith(closeBtn.cloneNode(true));
+    // --- FIX: Remove cloneNode/replaceWith lines ---
 
     // Profile picture handlers
     profilePic.addEventListener("click", openModal);
@@ -179,21 +177,27 @@ class PortfolioEnhancer {
     console.log("Event listeners attached");
     console.log("Profile pic clickable:", profilePic);
   }
+
   setupMobileNavigation() {
     const hamburger = document.querySelector(".hamburger");
     const navLinks = document.querySelector(".nav-links");
     if (!hamburger || !navLinks) return;
 
+    // Ensure navLinks has an id for aria-controls
+    if (!navLinks.id) {
+      navLinks.id = "nav-links";
+    }
+
     const toggleMenu = () => {
       const isExpanded = hamburger.getAttribute("aria-expanded") === "true";
-      hamburger.setAttribute("aria-expanded", !isExpanded);
+      hamburger.setAttribute("aria-expanded", String(!isExpanded));
       navLinks.classList.toggle("active");
       hamburger.classList.toggle("active");
     };
 
     hamburger.setAttribute("aria-label", "Toggle navigation menu");
     hamburger.setAttribute("aria-expanded", "false");
-    hamburger.setAttribute("aria-controls", "nav-links");
+    hamburger.setAttribute("aria-controls", navLinks.id);
     hamburger.addEventListener("click", toggleMenu);
 
     document.querySelectorAll(".nav-links a").forEach((link) => {
@@ -349,12 +353,12 @@ class PortfolioEnhancer {
     const getPreferredTheme = () => {
       try {
         const storedTheme = localStorage.getItem("theme");
-        return (
-          storedTheme ||
-          (window.matchMedia("(prefers-color-scheme: light)").matches
-            ? "light"
-            : "dark")
-        );
+        if (storedTheme === "light" || storedTheme === "dark") {
+          return storedTheme;
+        }
+        return window.matchMedia("(prefers-color-scheme: light)").matches
+          ? "light"
+          : "dark";
       } catch (error) {
         console.warn("localStorage not available, using default theme");
         return window.matchMedia("(prefers-color-scheme: light)").matches
@@ -367,8 +371,8 @@ class PortfolioEnhancer {
       document.body.classList.toggle("light-mode", theme === "light");
       const icon = modeToggle.querySelector("i");
       if (icon) {
-        icon.classList.toggle("fa-sun", theme === "light");
-        icon.classList.toggle("fa-moon", theme === "dark");
+        icon.classList.remove("fa-sun", "fa-moon");
+        icon.classList.add(theme === "light" ? "fa-sun" : "fa-moon");
       }
 
       try {
@@ -463,3 +467,7 @@ class PortfolioEnhancer {
     });
   }
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  new PortfolioEnhancer();
+});
