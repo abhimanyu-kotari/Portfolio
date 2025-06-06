@@ -1106,11 +1106,16 @@ footer {
   --text-dark: #fff; /* For buttons on colored backgrounds */
   --card-bg: #fff; /* Solid white for cards */
   --card-border: #ddd; /* Light gray border */
-  --primary: #009688; /* Slightly deeper teal for contrast */
-  --primary-dark: #00796b;
-  --primary-light: #e0f7fa; /* Very light teal for accents */
+  --primary: #171b1e; /* Blue accent for light mode */
+  --primary-dark: #0a0d10;
+  --primary-light: #e3f2fd; /* Very light blue for accents */
+  --glow-sm: 0 0 10px var(--primary);
+  --glow-md: 0 0 15px var(--primary);
+  --text-glow: 0 0 8px rgba(241, 245, 249, 0.4); /* matches --primary */
 }
-
+.light-mode .nav-links a {
+  color: #706d6d !important;
+}
 /* Add this right after the .light-mode block */
 .light-mode .card,
 .light-mode .project-card,
@@ -1134,6 +1139,11 @@ footer {
 
 .light-mode .theme-toggle i {
   color: var(--primary);
+}
+
+/* Make stars black in light mode */
+.light-mode .star {
+  background: #111 !important;
 }
 /* ===== Responsive Design ===== */
 /* Remove duplicate .nav-links and .menu-toggle rules to avoid conflicts.
