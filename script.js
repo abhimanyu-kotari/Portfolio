@@ -405,5 +405,21 @@ class PortfolioEnhancer {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  // ...existing code...
+
+  // Starfield effect
+  const starfield = document.querySelector(".starfield");
+  if (starfield) {
+    const numStars = 80;
+    for (let i = 0; i < numStars; i++) {
+      const star = document.createElement("div");
+      star.className = "star";
+      star.style.top = Math.random() * 100 + "vh";
+      star.style.left = Math.random() * 100 + "vw";
+      star.style.opacity = 0.5 + Math.random() * 0.5;
+      star.style.animationDuration = (1.5 + Math.random()).toFixed(2) + "s";
+      starfield.appendChild(star);
+    }
+  }
   new PortfolioEnhancer();
 });
