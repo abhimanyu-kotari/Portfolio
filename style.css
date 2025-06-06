@@ -391,8 +391,8 @@ a:hover {
 }
 
 .profile-pic {
-  width: min(280px, 80vw);
-  height: min(280px, 80vw);
+  width: min(230px, 80vw);
+  height: min(230px, 80vw);
   border-radius: 50%;
   border: 5px solid var(--primary);
   box-shadow: var(--glow-md);
@@ -1097,8 +1097,6 @@ footer {
   }
 }
 
-/* ===== Dark/Light Theme ===== */
-/* ...existing code... */
 .light-mode {
   --dark-bg: #f8f9fa;
   --darker-bg: #e9ecef;
@@ -1118,6 +1116,24 @@ footer {
 .light-mode .project-card,
 .light-mode .certification-card {
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+}
+
+/* Make theme toggle button visible and styled in light mode */
+.light-mode .theme-toggle {
+  background: #fff;
+  border: 1.5px solid var(--primary);
+  color: var(--primary);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.light-mode .theme-toggle:hover,
+.light-mode .theme-toggle:focus-visible {
+  background: var(--primary-light);
+  color: var(--primary-dark);
+}
+
+.light-mode .theme-toggle i {
+  color: var(--primary);
 }
 /* ===== Responsive Design ===== */
 /* Remove duplicate .nav-links and .menu-toggle rules to avoid conflicts.
