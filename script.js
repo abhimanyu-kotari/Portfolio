@@ -31,11 +31,12 @@ class PortfolioEnhancer {
       this.setupMobileNavigation();
       this.setupScrollProgress();
       this.setupIntersectionObserver();
-      this.setupContactForm();
+
       this.setupThemeToggle();
       this.setupCopyrightYear();
       this.setupScrollToTop();
       this.setupCertificateModal();
+      this.setupProjectFilters();
     } catch (error) {
       console.error("PortfolioEnhancer initialization failed:", error);
       this.showErrorMessage();
@@ -91,7 +92,36 @@ class PortfolioEnhancer {
       });
     });
   }
+  // ...existing code...
 
+  setupProjectFilters() {
+    const filterButtons = document.querySelectorAll(".filter-btn");
+    const projectCards = document.querySelectorAll(".project-card");
+
+    if (!filterButtons.length || !projectCards.length) return;
+
+    filterButtons.forEach((btn) => {
+      btn.addEventListener("click", function () {
+        // Remove 'active' from all buttons, add to this
+        filterButtons.forEach((b) => b.classList.remove("active"));
+        this.classList.add("active");
+
+        const filter = this.getAttribute("data-filter");
+        projectCards.forEach((card) => {
+          if (
+            filter === "all" ||
+            card.getAttribute("data-category") === filter
+          ) {
+            card.style.display = "";
+          } else {
+            card.style.display = "none";
+          }
+        });
+      });
+    });
+  }
+
+  // ...existing code...
   setupProfileModal() {
     const profilePic = document.querySelector(".profile-pic");
     if (!profilePic) return;
@@ -210,85 +240,6 @@ class PortfolioEnhancer {
     }
   }
 
-  setupContactForm() {
-    const form = document.getElementById("contactForm");
-    if (!form) return;
-
-    // Create status message element
-    const statusDiv = document.createElement("div");
-    statusDiv.id = "form-status";
-    statusDiv.style.cssText = `
-      margin-top: 1rem;
-      padding: 0.75rem;
-      border-radius: 4px;
-      display: none;
-      font-weight: 500;
-    `;
-    form.appendChild(statusDiv);
-
-    const showStatus = (message, isError = false) => {
-      statusDiv.textContent = message;
-      statusDiv.style.display = "block";
-      statusDiv.style.backgroundColor = isError ? "#fee" : "#efe";
-      statusDiv.style.color = isError ? "#c33" : "#363";
-      statusDiv.style.border = `1px solid ${isError ? "#fcc" : "#cfc"}`;
-
-      // Auto-hide after 5 seconds
-      setTimeout(() => {
-        statusDiv.style.display = "none";
-      }, 5000);
-    };
-
-    const submitButton = form.querySelector('button[type="submit"]');
-    const originalButtonText = submitButton?.textContent || "Send Message";
-
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-
-      // Show loading state
-      if (submitButton) {
-        submitButton.disabled = true;
-        submitButton.textContent = "Sending...";
-      }
-
-      statusDiv.style.display = "none";
-
-      try {
-        const formData = new FormData(form);
-
-        // Ensure form-name is included for Netlify
-        const formName = form.getAttribute("name") || "contact";
-        formData.set("form-name", formName);
-
-        const response = await fetch("/", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-          },
-          body: new URLSearchParams(formData).toString(),
-        });
-        if (response.ok) {
-          form.reset();
-          showStatus("Thank you! Your message has been sent successfully.");
-        } else {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-      } catch (error) {
-        console.error("Form submission error:", error);
-        showStatus(
-          "Sorry, there was a problem sending your message. Please try again.",
-          true
-        );
-      } finally {
-        // Reset button state
-        if (submitButton) {
-          submitButton.disabled = false;
-          submitButton.textContent = originalButtonText;
-        }
-      }
-    });
-  }
-
   setupThemeToggle() {
     const modeToggle = document.getElementById("theme-toggle");
     if (!modeToggle) return;
@@ -402,33 +353,33 @@ class PortfolioEnhancer {
     scrollToTopBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
     scrollToTopBtn.setAttribute("aria-label", "Scroll to top");
     document.body.appendChild(scrollToTopBtn);
-
     const style = document.createElement("style");
     style.textContent = `
-      .scroll-to-top {
-        display: none;
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        z-index: 1000;
-        background: var(--primary-color, #007bff);
-        color: white;
-        border: none;
-        border-radius: 50%;
-        width: 50px;
-        height: 50px;
-        cursor: pointer;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-        transition: all 0.3s ease;
-      }
-      .scroll-to-top:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-      }
-      .scroll-to-top.visible {
-        display: block;
-      }
-    `;
+  .scroll-to-top {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    background: var(--primary); /* <-- Use your CSS variable */
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+  }
+  .scroll-to-top:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  }
+  .scroll-to-top.visible {
+    display: block;
+  }
+`;
+    // ...existing code...
     document.head.appendChild(style);
 
     let scrollTimeout;
