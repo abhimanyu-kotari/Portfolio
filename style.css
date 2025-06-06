@@ -1098,19 +1098,27 @@ footer {
 }
 
 /* ===== Dark/Light Theme ===== */
+/* ...existing code... */
 .light-mode {
   --dark-bg: #f8f9fa;
   --darker-bg: #e9ecef;
   --accent-bg: #dee2e6;
-  --text-light: #495057;
-  --text-lighter: #212529;
-  --card-bg: rgba(255, 255, 255, 0.9);
-  --card-border: rgba(0, 0, 0, 0.1);
-  --primary: #00a896;
-  --primary-dark: #008b7c;
-  --primary-light: rgba(0, 168, 150, 0.1);
+  --text-light: #222; /* Much darker for body text */
+  --text-lighter: #111; /* Even darker for headings */
+  --text-dark: #fff; /* For buttons on colored backgrounds */
+  --card-bg: #fff; /* Solid white for cards */
+  --card-border: #ddd; /* Light gray border */
+  --primary: #009688; /* Slightly deeper teal for contrast */
+  --primary-dark: #00796b;
+  --primary-light: #e0f7fa; /* Very light teal for accents */
 }
 
+/* Add this right after the .light-mode block */
+.light-mode .card,
+.light-mode .project-card,
+.light-mode .certification-card {
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+}
 /* ===== Responsive Design ===== */
 /* Remove duplicate .nav-links and .menu-toggle rules to avoid conflicts.
    Use only the earlier @media (max-width: 992px) block for .hamburger, .theme-toggle, and .nav-links positioning.
