@@ -1288,7 +1288,16 @@ footer {
   }
 }
 
-/* Profile Modal Styles */
+/* ===== Profile Picture Zoom Effect ===== */
+.profile-pic.zoomed {
+  transform: scale(2.2) !important;
+  z-index: 2001;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+  cursor: zoom-out;
+  transition: transform 0.4s cubic-bezier(0.4, 2, 0.6, 1), box-shadow 0.3s;
+}
+
+/* Certificate Modal Styles */
 .modal {
   display: none;
   position: fixed;
@@ -1301,14 +1310,12 @@ footer {
   align-items: center;
   justify-content: center;
 }
-.modal.visible {
+.modal.show {
   display: flex;
 }
 .modal-content {
   max-width: 90vw;
   max-height: 80vh;
-  display: block;
-  margin: auto;
   border-radius: 12px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
   background: #222;
@@ -1330,7 +1337,7 @@ footer {
   color: var(--primary);
   outline: 2px solid var(--primary);
 }
-#caption {
+#certModalCaption {
   color: #fff;
   text-align: center;
   margin-top: 1rem;

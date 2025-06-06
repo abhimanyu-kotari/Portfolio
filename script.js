@@ -35,6 +35,7 @@ class PortfolioEnhancer {
       this.setupThemeToggle();
       this.setupCopyrightYear();
       this.setupScrollToTop();
+      this.setupCertificateModal();
     } catch (error) {
       console.error("PortfolioEnhancer initialization failed:", error);
       this.showErrorMessage();
@@ -92,92 +93,34 @@ class PortfolioEnhancer {
   }
 
   setupProfileModal() {
-    console.log("Initializing profile modal..."); // Debug log
-
-    const modal = document.getElementById("photoModal");
-    if (!modal) {
-      console.error("Modal element (#photoModal) not found");
-      return;
-    }
-
-    // Debug: Log modal element
-    console.log("Modal element found:", modal);
-
-    // Reset modal state
-    modal.classList.add("modal");
-    modal.classList.remove("visible");
-    modal.setAttribute("aria-hidden", "true");
-
-    const modalImg = document.getElementById("modalImage");
-    const captionText = document.getElementById("caption");
     const profilePic = document.querySelector(".profile-pic");
-    const closeBtn = modal.querySelector(".close"); // Scoped to modal
+    if (!profilePic) return;
 
-    // Debug: Log all elements
-    console.log({
-      modalImg,
-      captionText,
-      profilePic,
-      closeBtn,
-    });
+    profilePic.style.transition =
+      "transform 0.4s cubic-bezier(.4,2,.6,1), box-shadow 0.3s";
 
-    if (!modalImg || !captionText || !profilePic || !closeBtn) {
-      console.error("One or more required elements not found");
-      return;
-    }
-
-    const openModal = () => {
-      console.log("Opening modal...");
-      modal.classList.add("visible");
-      modal.setAttribute("aria-hidden", "false");
-      modalImg.src = profilePic.src || "";
-      captionText.textContent = profilePic.alt || "";
-      document.body.style.overflow = "hidden";
-      closeBtn.focus();
+    const toggleZoom = () => {
+      profilePic.classList.toggle("zoomed");
+      document.body.style.overflow = profilePic.classList.contains("zoomed")
+        ? "hidden"
+        : "";
     };
 
-    const closeModal = () => {
-      console.log("Closing modal...");
-      modal.classList.remove("visible");
-      modal.setAttribute("aria-hidden", "true");
-      document.body.style.overflow = "";
-      profilePic.focus();
-    };
-
-    // --- FIX: Remove cloneNode/replaceWith lines ---
-
-    // Profile picture handlers
-    profilePic.addEventListener("click", openModal);
+    profilePic.addEventListener("click", toggleZoom);
     profilePic.addEventListener("keydown", (e) => {
       if (e.key === "Enter" || e.key === " ") {
         e.preventDefault();
-        openModal();
+        toggleZoom();
       }
     });
 
-    // Close button handlers
-    closeBtn.addEventListener("click", closeModal);
-    closeBtn.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") closeModal();
-    });
-
-    // Modal handlers
-    modal.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") closeModal();
-    });
-
-    // Click outside to close
-    modal.addEventListener("click", (e) => {
-      if (e.target === modal) {
-        closeModal();
+    // Optional: Zoom out on Escape key
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && profilePic.classList.contains("zoomed")) {
+        toggleZoom();
       }
     });
-
-    // Debug: Test if handlers are working
-    console.log("Event listeners attached");
-    console.log("Profile pic clickable:", profilePic);
   }
-
   setupMobileNavigation() {
     const hamburger = document.querySelector(".hamburger");
     const navLinks = document.querySelector(".nav-links");
@@ -403,7 +346,49 @@ class PortfolioEnhancer {
       setTheme(isLight ? "dark" : "light");
     });
   }
+  setupCertificateModal() {
+    // Modal elements
+    const modal = document.getElementById("certModal");
+    const modalImg = document.getElementById("certModalImg");
+    const modalCaption = document.getElementById("certModalCaption");
+    const modalClose = document.getElementById("certModalClose");
+    if (!modal || !modalImg || !modalClose) return;
 
+    // Open modal on certificate click
+    document.querySelectorAll(".view-certificate").forEach((link) => {
+      link.addEventListener("click", function (e) {
+        e.preventDefault();
+        modalImg.src = this.getAttribute("data-img");
+        modalCaption.textContent = this.getAttribute("data-caption") || "";
+        modal.classList.add("show");
+      });
+    });
+
+    // Close modal on X click
+    modalClose.onclick = function () {
+      modal.classList.remove("show");
+      modalImg.src = "";
+      modalCaption.textContent = "";
+    };
+
+    // Close modal on outside click
+    modal.onclick = function (e) {
+      if (e.target === modal) {
+        modal.classList.remove("show");
+        modalImg.src = "";
+        modalCaption.textContent = "";
+      }
+    };
+
+    // Close modal on Escape key
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && modal.classList.contains("show")) {
+        modal.classList.remove("show");
+        modalImg.src = "";
+        modalCaption.textContent = "";
+      }
+    });
+  }
   setupCopyrightYear() {
     const yearElement = document.getElementById("year");
     if (yearElement) {
