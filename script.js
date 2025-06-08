@@ -83,11 +83,7 @@ class PortfolioEnhancer {
             window.pageYOffset -
             headerHeight;
           window.scrollTo({ top: targetPosition, behavior: "smooth" });
-          history.pushState(
-            { targetId },
-            "Smooth Scroll Target",
-            encodeURIComponent(targetId)
-          );
+          history.pushState({ targetId }, "Smooth Scroll Target", targetId);
         }
       });
     });

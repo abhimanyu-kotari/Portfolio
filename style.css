@@ -1407,6 +1407,23 @@ footer {
   transform: translateY(-2px) scale(1.04);
 }
 
+/* Responsive WhatsApp Contact Card */
+@media (max-width: 600px) {
+  .whatsapp-contact-card {
+    padding: 1rem 0.5rem;
+    margin: 1rem 0 0 0;
+    max-width: 98vw;
+    border-radius: 10px;
+    font-size: 1rem;
+  }
+  .whatsapp-btn {
+    font-size: 1rem;
+    padding: 0.9rem 1.2rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
 /* Starfield background */
 .starfield {
   position: fixed;
