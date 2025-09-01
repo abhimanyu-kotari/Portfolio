@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- SEO -->
+    <title>Abhimanyu Kotari — AI/ML & Data Science Portfolio</title>
+    <meta
+      name="description"
+      content="AI/ML and Data Science portfolio of Abhimanyu Kotari — projects, skills, experience, and contact for opportunities. Based in Bengaluru, India."
+    />
+    <meta
+      name="keywords"
+      content="Abhimanyu Kotari, AI, Machine Learning, Data Science, Portfolio, Python, Deep Learning, RV University"
+    />
+    <meta name="robots" content="index,follow" />
+    <meta name="theme-color" content="#0b0f14" />
+    <link rel="canonical" href="https://example.com/" />
+
+    <!-- Open Graph / Twitter -->
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Abhimanyu Kotari — AI/ML & Data Science Portfolio"
+    />
+    <meta
+      property="og:description"
+      content="Projects, skills, and experience in AI/ML and Data Science. Open to Data Scientist & Data Analyst roles."
+    />
+    <meta property="og:image" content="myphoto.jpg" />
+    <meta property="og:locale" content="en_IN" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Favicon (inline SVG AK) -->
+    <link
+      rel="icon"
+      href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="12" fill="%230f1621"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="Inter,Arial" font-size="28" fill="%237c7cff" font-weight="700">AK</text></svg>'
+    />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- TailwindCSS (CDN) -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              brand1: "#7c7cff",
+              brand2: "#00e5a8",
+              brand3: "#ff8db3",
+              surface: {
+                DEFAULT: "#0f1621",
+                light: "#121c2a",
+              },
+            },
+            boxShadow: {
+              card: "0 10px 30px rgba(0,0,0,0.25)",
+            },
+            keyframes: {
+              fadeUp: {
+                "0%": { opacity: 0, transform: "translateY(8px)" },
+                "100%": { opacity: 1, transform: "none" },
+              },
+            },
+            animation: { fadeUp: "fadeUp .6s ease both" },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      :root {
+        color-scheme: dark light;
+      }
+      body {
+        font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial,
+          sans-serif;
+      }
+      .grad {
+        background: linear-gradient(
+          135deg,
+          var(--c1, #7c7cff),
+          var(--c2, #00e5a8) 55%,
+          var(--c3, #ff8db3)
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .reveal {
+        opacity: 0;
+        transform: translateY(10px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: none;
+      }
+      .active-link {
+        color: rgb(0, 229, 168) !important;
+        font-weight: 600;
+      }
+    </style>
+  </head>
+
+  <body class="bg-white text-slate-900 dark:bg-[#0b0f14] dark:text-slate-100">
+    <!-- Progress bar -->
+    <div
+      id="progress"
+      class="fixed left-0 top-0 h-1 bg-gradient-to-r from-brand1 via-brand2 to-brand3 w-0 z-50"
+    ></div>
+
+    <!-- Header -->
+    <header
+      class="sticky top-0 z-40 backdrop-blur supports-[backdrop-filter]:bg-white/70 dark:supports-[backdrop-filter]:bg-slate-900/50 border-b border-slate-200/60 dark:border-white/10"
+    >
+      <div
+        class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between"
+      >
+        <a href="#home" class="font-extrabold text-lg tracking-wide"
+          >AK<span class="grad">.</span></a
+        >
+
+        <nav class="hidden md:flex gap-6 text-sm">
+          <a href="#about" class="hover:text-brand2 transition navlink"
+            >About</a
+          >
+          <a href="#skills" class="hover:text-brand2 transition navlink"
+            >Skills</a
+          >
+          <a href="#projects" class="hover:text-brand2 transition navlink"
+            >Projects</a
+          >
+          <a href="#experience" class="hover:text-brand2 transition navlink"
+            >Experience</a
+          >
+          <a href="#contact" class="hover:text-brand2 transition navlink"
+            >Contact</a
+          >
+        </nav>
+
+        <div class="flex items-center gap-2">
+          <button
+            id="themeToggle"
+            aria-label="Toggle dark mode"
+            class="w-10 h-10 grid place-items-center rounded-lg border border-slate-200 dark:border-white/10 hover:shadow transition"
+          >
+            <span id="iconSun" class="hidden">☀</span>
+            <span id="iconMoon">🌙</span>
+          </button>
+          <button
+            id="menuBtn"
+            class="md:hidden w-10 h-10 grid place-items-center rounded-lg border border-slate-200 dark:border-white/10"
+          >
+            ☰
+          </button>
+        </div>
+      </div>
+      <div
+        id="mobileMenu"
+        class="md:hidden hidden border-t border-slate-200 dark:border-white/10"
+      >
+        <div class="max-w-6xl mx-auto px-4 py-3 flex flex-col gap-3">
+          <a href="#about" class="py-1 navlink">About</a>
+          <a href="#skills" class="py-1 navlink">Skills</a>
+          <a href="#projects" class="py-1 navlink">Projects</a>
+          <a href="#experience" class="py-1 navlink">Experience</a>
+          <a href="#contact" class="py-1 navlink">Contact</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="home">
+      <!-- Hero -->
+      <section
+        class="max-w-6xl mx-auto px-4 py-20 md:py-28 grid md:grid-cols-2 gap-10 items-center"
+      >
+        <div class="reveal order-2 md:order-1 text-center md:text-left">
+          <p class="text-brand2 font-semibold tracking-wide">
+            Open to Data Scientist & Data Analyst roles
+          </p>
+          <h1 class="mt-3 text-4xl md:text-6xl font-extrabold leading-tight">
+            I build scalable AI/ML solutions
+            <span class="block grad"
+              >that transform raw data into actionable insights</span
+            >
+          </h1>
+          <p class="mt-3 italic text-slate-600 dark:text-slate-300">
+            Aspiring Data Scientist | AI/ML Enthusiast | Turning data into
+            decisions.
+          </p>
+          <p class="mt-4 text-slate-600 dark:text-slate-300 max-w-xl">
+            B.Sc (Hons) CS — Data Science @ RV University · Former Software Dev
+            Intern @ Ganglia Technologies. I design, train, and deploy models
+            that create measurable business value.
+          </p>
+          <div
+            class="mt-6 flex flex-wrap gap-3 justify-center md:justify-start"
+          >
+            <a
+              href="#projects"
+              class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-brand1 via-brand2 to-brand3 text-slate-900 font-semibold shadow hover:opacity-95 transition"
+              >View Projects</a
+            >
+            <a
+              href="#contact"
+              class="px-5 py-2.5 rounded-xl border border-slate-200 dark:border-white/10 hover:border-brand2/60 hover:shadow transition"
+              >Contact</a
+            >
+          </div>
+          <div
+            class="mt-6 flex items-center gap-2 justify-center md:justify-start"
+          >
+            <a
+              aria-label="GitHub"
+              href="#"
+              class="w-10 h-10 grid place-items-center rounded-full border border-slate-200 dark:border-white/10 hover:shadow transition"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                width="22"
+                height="22"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  d="M12 .5a12 12 0 0 0-3.79 23.39c.6.11.82-.26.82-.58v-2.02c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.35-1.76-1.35-1.76-1.1-.75.08-.74.08-.74 1.22.09 1.86 1.25 1.86 1.25 1.08 1.85 2.83 1.32 3.52 1.01.11-.79.42-1.32.77-1.62-2.66-.3-5.47-1.33-5.47-5.92 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.4 11.4 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.67 1.66.25 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.6-2.81 5.61-5.49 5.91.43.37.82 1.1.82 2.22v3.29c0 .32.22.7.83.58A12 12 0 0 0 12 .5Z"
+                />
+              </svg>
+            </a>
+            <a
+              aria-label="LinkedIn"
+              href="https://www.linkedin.com/in/abhimanyu-kotari"
+              target="_blank"
+              rel="noopener"
+              class="w-10 h-10 grid place-items-center rounded-full border border-slate-200 dark:border-white/10 hover:shadow transition"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                width="22"
+                height="22"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  d="M4.98 3.5a2.5 2.5 0 1 1-.01 5.01 2.5 2.5 0 0 1 .01-5.01zM3 9h4v12H3zM14.5 9c-2.21 0-3.5 1.2-3.5 3.08V21h4v-6.63c0-1.62.79-2.37 2.02-2.37 1.22 0 1.98.83 1.98 2.37V21h4v-7.92C23 10.22 21.3 9 19.08 9c-1.38 0-2.55.54-3.08 1.5h-.02V9h-1.48z"
+                />
+              </svg>
+            </a>
+            <a
+              aria-label="WhatsApp"
+              href="https://wa.me/919591560751?text=Hi%20Abhimanyu%2C%20I%27d%20like%20to%20connect."
+              target="_blank"
+              rel="noopener"
+              class="w-10 h-10 grid place-items-center rounded-full border border-slate-200 dark:border-white/10 hover:shadow transition"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                width="22"
+                height="22"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  d="M20.52 3.48A11.9 11.9 0 0 0 12.01 0C5.4 0 .08 5.32.08 11.92c0 2.1.55 4.16 1.6 5.98L0 24l6.26-1.64a11.86 11.86 0 0 0 5.75 1.47h.01c6.61 0 11.93-5.32 11.93-11.92 0-3.18-1.24-6.17-3.43-8.43ZM12.01 22.06a10.1 10.1 0 0 1-5.16-1.42l-.37-.22-3.72.97.99-3.63-.24-.37a10.08 10.08 0 1 1 8.5 4.67Zm5.54-7.55c-.3-.15-1.78-.88-2.06-.98-.28-.1-.48-.15-.68.15-.2.3-.78.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.46-.88-.78-1.48-1.73-1.65-2.03-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.38-.02-.53-.08-.15-.68-1.64-.93-2.25-.24-.58-.49-.5-.68-.5-.17-.01-.38-.01-.58-.01-.2 0-.53.08-.8.38-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.86 1.22 3.06.15.2 2.1 3.2 5.08 4.49.71.31 1.27.5 1.7.64.71.22 1.36.19 1.88.11.57-.08 1.78-.73 2.03-1.43.25-.7.25-1.3.18-1.43-.07-.13-.25-.2-.55-.35Z"
+                />
+              </svg>
+            </a>
+            <a
+              aria-label="Email"
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=abhimanyukotari1@gmail.com&su=Hello%20from%20your%20portfolio"
+              target="_blank"
+              rel="noopener"
+              class="w-10 h-10 grid place-items-center rounded-full border border-slate-200 dark:border-white/10 hover:shadow transition"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                width="22"
+                height="22"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  d="M2 6c0-1.1.9-2 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6zm2 0 8 5 8-5H4zm16 12V8l-8 5-8-5v10h16z"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="relative reveal order-1 md:order-2">
+          <div
+            class="absolute -inset-6 bg-gradient-to-tr from-brand1/30 via-brand2/30 to-brand3/30 blur-3xl rounded-full"
+          ></div>
+          <img
+            src="./myphoto.jpg"
+            alt="Abhimanyu Kotari"
+            class="relative w-36 h-36 md:w-72 md:h-72 object-cover rounded-full mx-auto shadow-card border border-white/10"
+          />
+        </div>
+      </section>
+
+      <!-- About -->
+      <section
+        id="about"
+        class="scroll-mt-24 max-w-6xl mx-auto px-4 py-16 reveal"
+      >
+        <div class="max-w-3xl">
+          <h2 class="text-2xl md:text-3xl font-bold">About</h2>
+          <p class="mt-3 text-slate-600 dark:text-slate-300">
+            I chose AI/ML because I'm fascinated by how data can be transformed
+            into decisions and products that scale. My journey started with
+            curiosity—automating small tasks, analyzing datasets, and seeing
+            tangible outcomes. That curiosity grew into a mission: build
+            practical, human‑centered AI systems that solve real problems.
+          </p>
+          <p class="mt-3 text-slate-600 dark:text-slate-300">
+            Today, I'm pursuing B.Sc (Hons) in CS — Data Science at RV
+            University, and I’ve interned as a Software Developer at Ganglia
+            Technologies. I’m hands‑on: I experiment, iterate fast, and measure
+            results. My goal is to ship AI features and analytics that bring
+            value—faster decisions, better experiences, and measurable impact.
+          </p>
+          <p class="mt-3 text-slate-600 dark:text-slate-300">
+            Beyond academics, I enjoy playing chess ♟️, watching movies 🎬, and
+            exploring entrepreneurial ideas 💡 which help me think strategically
+            and creatively.
+          </p>
+        </div>
+        <div class="mt-8 grid sm:grid-cols-3 gap-4">
+          <div
+            class="p-5 rounded-2xl border border-slate-200 dark:border-white/10 bg-white/50 dark:bg-white/5 flex items-center gap-3"
+          >
+            <div class="text-2xl">📦</div>
+            <div>
+              <div class="text-xl font-extrabold">10+</div>
+              <div class="text-sm text-slate-500 dark:text-slate-400">
+                Projects
+              </div>
+            </div>
+          </div>
+          <div
+            class="p-5 rounded-2xl border border-slate-200 dark:border-white/10 bg-white/50 dark:bg-white/5 flex items-center gap-3"
+          >
+            <div class="text-2xl">👥</div>
+            <div>
+              <div class="text-xl font-extrabold">900+</div>
+              <div class="text-sm text-slate-500 dark:text-slate-400">
+                Followers
+              </div>
+            </div>
+          </div>
+          <div
+            class="p-5 rounded-2xl border border-slate-200 dark:border-white/10 bg-white/50 dark:bg-white/5 flex items-center gap-3"
+          >
+            <div class="text-2xl">🔗</div>
+            <div>
+              <div class="text-xl font-extrabold">500+</div>
+              <div class="text-sm text-slate-500 dark:text-slate-400">
+                Connections
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Skills -->
+      <section
+        id="skills"
+        class="scroll-mt-24 max-w-6xl mx-auto px-4 py-16 reveal"
+      >
+        <div class="mb-8">
+          <h2 class="text-2xl md:text-3xl font-bold">Skills</h2>
+          <p class="text-slate-600 dark:text-slate-300">
+            Grouped by category with proficiency indicators.
+          </p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-6">
+          <!-- Programming & Query -->
+          <div
+            class="p-6 rounded-2xl border border-slate-200 dark:border-white/10 bg-white/50 dark:bg-white/5"
+          >
+            <h3 class="font-semibold mb-4">Programming & Query</h3>
+            <ul class="space-y-4">
+              <li>
+                <div class="flex justify-between text-sm">
+                  <span>Python</span><span>Advanced</span>
+                </div>
+                <div
+                  class="h-2 bg-slate-200/70 dark:bg-white/10 rounded-full overflow-hidden"
+                >
+                  <div
+                    class="h-full w-[90%] bg-gradient-to-r from-brand1 to-brand2"
+                  ></div>
+                </div>
+              </li>
+              <li>
+                <div class="flex justify-between text-sm">
+                  <span>SQL</span><span>Advanced</span>
+                </div>
+                <div
+                  class="h-2 bg-slate-200/70 dark:bg-white/10 rounded-full overflow-hidden"
+                >
+                  <div
+                    class="h-full w-[85%] bg-gradient-to-r from-brand2 to-brand3"
+                  ></div>
+                </div>
+              </li>
+              <li>
+                <div class="flex justify-between text-sm">
+                  <span>Java</span><span>Intermediate</span>
+                </div>
+                <div
+                  class="h-2 bg-slate-200/70 dark:bg-white/10 rounded-full overflow-hidden"
+                >
+                  <div
+                    class="h-full w-[70%] bg-gradient-to-r from-brand1 to-brand3"
+                  ></div>
+                </div>
+              </li>
+              <li>
+                <div class="flex justify-between text-sm">
+                  <span>C/C++</span><span>Intermediate</span>
+                </div>
+                <div
+                  class="h-2 bg-slate-200/70 dark:bg-white/10 rounded-full overflow-hidden"
+                >
+                  <div
+                    class="h-full w-[70%] bg-gradient-to-r from-brand2 to-brand3"
+                  ></div>
+                </div>
+              </li>
+              <li>
+                <div class="flex justify-between text-sm">
+                  <span>JavaScript</span><span>Intermediate</span>
+                </div>
+                <div
+                  class="h-2 bg-slate-200/70 dark:bg-white/10 rounded-full overflow-hidden"
+                >
+                  <div
+                    class="h-full w-[70%] bg-gradient-to-r from-brand1 to-brand3"
+                  ></div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <!-- AI/ML & Data Science -->
+          <div
+            class="p-6 rounded-2xl border border-slate-200 dark:border-white/10 bg-white/50 dark:bg-white/5"
+          >
+            <h3 class="font-semibold mb-4">AI/ML & Data Science</h3>
+            <ul class="space-y-4">
+              <li>
+                <div class="flex justify-between text-sm">
+                  <span>scikit‑learn</span><span>Advanced</span>
+                </div>
+                <div
+                  class="h-2 bg-slate-200/70 dark:bg-white/10 rounded-full overflow-hidden"
+                >
+                  <div
+                    class="h-full w-[85%] bg-gradient-to-r from-brand1 to-brand2"
+                  ></div>
+                </div>
+              </li>
+              <li>
+                <div class="flex justify-between text-sm">
+                  <span>TensorFlow</span><span>Intermediate</span>
+                </div>
+                <div
+                  class="h-2 bg-slate-200/70 dark:bg-white/10 rounded-full overflow-hidden"
+                >
+                  <div
+                    class="h-full w-[70%] bg-gradient-to-r from-brand2 to-brand3"
+                  ></div>
+                </div>
+              </li>
+              <li>
+                <div class="flex justify-between text-sm">
+                  <span>PyTorch</span><span>Intermediate</span>
+                </div>
+                <div
+                  class="h-2 bg-slate-200/70 dark:bg-white/10 rounded-full overflow-hidden"
+                >
+                  <div
+                    class="h-full w-[70%] bg-gradient-to-r from-brand3 to-brand1"
+                  ></div>
+                </div>
+              </li>
+              <li>
+                <div class="flex justify-between text-sm">
+                  <span>Pandas & NumPy</span><span>Advanced</span>
+                </div>
+                <div
+                  class="h-2 bg-slate-200/70 dark:bg-white/10 rounded-full overflow-hidden"
+                >
+                  <div
+                    class="h-full w-[90%] bg-gradient-to-r from-brand1 to-brand3"
+                  ></div>
+                </div>
+              </li>
+              <li>
+                <div class="flex justify-between text-sm">
+                  <span>Data Viz (Matplotlib, Seaborn)</span
+                  ><span>Advanced</span>
+                </div>
+                <div
+                  class="h-2 bg-slate-200/70 dark:bg-white/10 rounded-full overflow-hidden"
+                >
+                  <div
+                    class="h-full w-[80%] bg-gradient-to-r from-brand2 to-brand3"
+                  ></div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <!-- Tools & Systems -->
+          <div
+            class="p-6 rounded-2xl border border-slate-200 dark:border-white/10 bg-white/50 dark:bg-white/5"
+          >
+            <h3 class="font-semibold mb-4">Tools & Systems</h3>
+            <ul class="space-y-4">
+              <li>
+                <div class="flex justify-between text-sm">
+                  <span>Git & GitHub</span><span>Advanced</span>
+                </div>
+                <div
+                  class="h-2 bg-slate-200/70 dark:bg-white/10 rounded-full overflow-hidden"
+                >
+                  <div
+                    class="h-full w-[85%] bg-gradient-to-r from-brand1 to-brand2"
+                  ></div>
+                </div>
+              </li>
+              <li>
+                <div class="flex justify-between text-sm">
+                  <span>Linux</span><span>Intermediate</span>
+                </div>
+                <div
+                  class="h-2 bg-slate-200/70 dark:bg-white/10 rounded-full overflow-hidden"
+                >
+                  <div
+                    class="h-full w-[75%] bg-gradient-to-r from-brand2 to-brand3"
+                  ></div>
+                </div>
+              </li>
+              <li>
+                <div class="flex justify-between text-sm">
+                  <span>Bash</span><span>Intermediate</span>
+                </div>
+                <div
+                  class="h-2 bg-slate-200/70 dark:bg-white/10 rounded-full overflow-hidden"
+                >
+                  <div
+                    class="h-full w-[70%] bg-gradient-to-r from-brand1 to-brand3"
+                  ></div>
+                </div>
+              </li>
+              <li>
+                <div class="flex justify-between text-sm">
+                  <span>DBMS</span><span>Intermediate</span>
+                </div>
+                <div
+                  class="h-2 bg-slate-200/70 dark:bg-white/10 rounded-full overflow-hidden"
+                >
+                  <div
+                    class="h-full w-[75%] bg-gradient-to-r from-brand3 to-brand2"
+                  ></div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects -->
+      <section
+        id="projects"
+        class="scroll-mt-24 max-w-6xl mx-auto px-4 py-16 reveal"
+      >
+        <div class="mb-8 flex items-end justify-between">
+          <div>
+            <h2 class="text-2xl md:text-3xl font-bold">Projects</h2>
+            <p class="text-slate-600 dark:text-slate-300">
+              Selected work showcasing AI/ML and data products.
+            </p>
+          </div>
+        </div>
+        <div class="grid gap-6">
+          <article
+            class="rounded-2xl overflow-hidden border border-slate-200 dark:border-white/10 bg-white/60 dark:bg-white/5"
+          >
+            <div class="grid md:grid-cols-2 items-stretch">
+              <div class="order-2 md:order-1 p-5">
+                <h3 class="font-semibold text-lg">
+                  Explainable Spine Lesion Detection using YOLO
+                </h3>
+                <ul
+                  class="mt-2 list-disc pl-5 text-sm text-slate-600 dark:text-slate-300 space-y-1"
+                >
+                  <li>
+                    Conducted literature review on Explainable Multi-Task and
+                    Ensemble Learning for Spine Lesion Detection
+                  </li>
+                  <li>
+                    Trained & benchmarked 8 YOLO variants on VinDr-SpineXR; best
+                    model: YOLOv8m (mAP@0.5: 82.5%).
+                  </li>
+                </ul>
+                <ul class="mt-3 flex flex-wrap gap-2 text-xs">
+                  <li
+                    class="px-2 py-1 rounded-full bg-slate-100 dark:bg-white/10"
+                  >
+                    YOLOv8
+                  </li>
+                  <li
+                    class="px-2 py-1 rounded-full bg-slate-100 dark:bg-white/10"
+                  >
+                    Explainable AI
+                  </li>
+                  <li
+                    class="px-2 py-1 rounded-full bg-slate-100 dark:bg-white/10"
+                  >
+                    VinDr-SpineXR
+                  </li>
+                </ul>
+              </div>
+              <div class="order-1 md:order-2">
+                <img
+                  loading="lazy"
+                  src="./spinal.jpeg"
+                  alt="Explainable Spine Lesion Detection using YOLO"
+                  class="w-full h-64 md:h-full object-cover"
+                />
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Experience -->
+      <section
+        id="experience"
+        class="scroll-mt-24 max-w-6xl mx-auto px-4 py-16 reveal"
+      >
+        <div class="mb-8 flex items-end justify-between">
+          <div>
+            <h2 class="text-2xl md:text-3xl font-bold">Experience</h2>
+            <p class="text-slate-600 dark:text-slate-300">
+              Professional roles, academic work, and contributions.
+            </p>
+          </div>
+        </div>
+        <div class="grid gap-6">
+          <!-- Professional -->
+          <article
+            class="rounded-2xl overflow-hidden border border-slate-200 dark:border-white/10 bg-white/60 dark:bg-white/5"
+          >
+            <div class="grid md:grid-cols-2 items-stretch">
+              <div class="order-2 md:order-1 p-5">
+                <h3 class="font-semibold text-lg">
+                  Machine Learning Intern · Ganglia Technologies
+                </h3>
+                <div class="mt-1 text-sm text-slate-500 dark:text-slate-400">
+                  June 2025 – July 2025 · Manipal, India
+                </div>
+                <ul
+                  class="mt-2 list-disc pl-5 text-sm text-slate-600 dark:text-slate-300 space-y-1"
+                >
+                  <li>
+                    Conducted literature review on Explainable Multi-Task and
+                    Ensemble Learning for Spine Lesion Detection
+                  </li>
+                  <li>
+                    Trained & benchmarked 8 YOLO variants on VinDr-SpineXR; best
+                    model: YOLOv8m (mAP@0.5: 82.5%).
+                  </li>
+                </ul>
+              </div>
+              <div class="order-1 md:order-2 grid grid-cols-2">
+                <img
+                  loading="lazy"
+                  src="./ganglia1.jpg"
+                  alt="Ganglia Technologies — internship visual"
+                  class="w-full h-64 md:h-full object-cover"
+                />
+                <img
+                  loading="lazy"
+                  src="./ganglia3.jpg"
+                  alt="Ganglia Technologies — internship visual"
+                  class="w-full h-64 md:h-full object-cover"
+                />
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Education -->
+      <section
+        id="education"
+        class="scroll-mt-24 max-w-6xl mx-auto px-4 py-16 reveal"
+      >
+        <div class="mb-8">
+          <h2 class="text-2xl md:text-3xl font-bold">Education</h2>
+          <p class="text-slate-600 dark:text-slate-300">
+            Academic background and achievements.
+          </p>
+        </div>
+        <div class="grid md:grid-cols-2 gap-6">
+          <!-- RV University -->
+          <div
+            class="p-5 rounded-2xl border border-slate-200 dark:border-white/10 bg-white/50 dark:bg-white/5 flex items-center gap-4"
+          >
+            <img
+              loading="lazy"
+              src="./RVU.jpeg"
+              alt="RV University logo"
+              class="w-12 h-12 rounded-full object-cover ring-1 ring-slate-200 dark:ring-white/10"
+            />
+            <div>
+              <div class="font-semibold">RV University, Bengaluru</div>
+              <div class="text-slate-600 dark:text-slate-300">
+                B.Sc (Hons) Computer Science (Data Science)
+              </div>
+              <div class="text-sm text-slate-500 dark:text-slate-400">
+                Aug 2024 – Aug 2028
+              </div>
+            </div>
+          </div>
+          <!-- RN Shetty PU College -->
+          <div
+            class="p-5 rounded-2xl border border-slate-200 dark:border-white/10 bg-white/50 dark:bg-white/5 flex items-center gap-4"
+          >
+            <img
+              loading="lazy"
+              src="./RNS.jpeg"
+              alt="RN Shetty PU College logo"
+              class="w-12 h-12 rounded-full object-cover ring-1 ring-slate-200 dark:ring-white/10"
+            />
+            <div>
+              <div class="font-semibold">RN Shetty PU College, Kundapur</div>
+              <div class="text-slate-600 dark:text-slate-300">
+                Pre-University (Science)
+              </div>
+              <div class="text-sm text-slate-500 dark:text-slate-400">
+                Jul 2022 – Jun 2024 · Grade: 93.2%
+              </div>
+            </div>
+          </div>
+          <!-- Government High School -->
+          <div
+            class="p-5 rounded-2xl border border-slate-200 dark:border-white/10 bg-white/50 dark:bg-white/5 flex items-center gap-4"
+          >
+            <img
+              loading="lazy"
+              src="./GHPS.png"
+              alt="Government High School, Siddapura logo"
+              class="w-12 h-12 rounded-full object-cover ring-1 ring-slate-200 dark:ring-white/10"
+            />
+            <div>
+              <div class="font-semibold">Government High School, Siddapura</div>
+              <div class="text-slate-600 dark:text-slate-300">SSLC</div>
+              <div class="text-sm text-slate-500 dark:text-slate-400">
+                2019 – 2022 · Grade: 91.2%
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section
+        id="contact"
+        class="scroll-mt-24 max-w-6xl mx-auto px-4 py-16 reveal"
+      >
+        <div class="max-w-3xl mx-auto text-center">
+          <h2 class="text-2xl md:text-3xl font-extrabold leading-relaxed">
+            Fastest way to reach me: WhatsApp, LinkedIn, or Email.<br />
+            <span class="font-semibold text-slate-600 dark:text-slate-300"
+              >Always open to collaborations, internships, and data/AI
+              projects.</span
+            >
+          </h2>
+        </div>
+        <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <a
+            class="group flex items-center justify-center gap-3 rounded-xl px-4 py-3 bg-emerald-500 text-white shadow hover:shadow-lg hover:scale-[1.02] transition"
+            href="https://wa.me/919591560751"
+            target="_blank"
+            rel="noopener"
+          >
+            <i class="fa-brands fa-whatsapp text-xl"></i>
+            <span class="font-semibold">Chat on WhatsApp</span>
+          </a>
+          <a
+            class="group flex items-center justify-center gap-3 rounded-xl px-4 py-3 bg-[#0a66c2] text-white shadow hover:shadow-lg hover:scale-[1.02] transition"
+            href="https://www.linkedin.com/in/abhimanyu-kotari"
+            target="_blank"
+            rel="noopener"
+          >
+            <i class="fa-brands fa-linkedin text-xl"></i>
+            <span class="font-semibold">Connect on LinkedIn</span>
+          </a>
+          <a
+            class="group flex items-center justify-center gap-3 rounded-xl px-4 py-3 bg-slate-900 text-white dark:bg-white/10 dark:text-slate-100 border border-slate-900/10 dark:border-white/10 shadow hover:shadow-lg hover:scale-[1.02] transition"
+            href="mailto:abhimanyukotari4@gmail.com"
+          >
+            <i class="fa-solid fa-envelope text-xl"></i>
+            <span class="font-semibold">Send an Email</span>
+          </a>
+          <a
+            class="group flex items-center justify-center gap-3 rounded-xl px-4 py-3 border border-slate-300 dark:border-white/20 hover:border-brand2/60 text-slate-900 dark:text-slate-100 shadow hover:shadow-lg hover:scale-[1.02] transition"
+            href="./Abhimanyu_Kotari_Resume11.pdf"
+            download
+          >
+            <i class="fa-solid fa-file-arrow-down text-xl"></i>
+            <span class="font-semibold">Download Résumé</span>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer
+      class="max-w-6xl mx-auto px-4 py-10 border-t border-slate-200 dark:border-white/10"
+    >
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div class="text-sm text-slate-500 dark:text-slate-400">
+          © <span id="year"></span> Abhimanyu Kotari. Designed & coded with ❤️
+          by Abhimanyu Kotari.
+        </div>
+        <div class="flex sm:justify-end gap-4 text-sm">
+          <a href="#about" class="hover:text-brand2">About</a>
+          <a href="#skills" class="hover:text-brand2">Skills</a>
+          <a href="#projects" class="hover:text-brand2">Projects</a>
+          <a href="#experience" class="hover:text-brand2">Experience</a>
+          <a href="#contact" class="hover:text-brand2">Contact</a>
+          <a href="#home" class="hover:text-brand2">Top ↑</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Year
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      // Theme toggle (Tailwind dark mode)
+      const html = document.documentElement;
+      const themeBtn = document.getElementById("themeToggle");
+      const sun = document.getElementById("iconSun");
+      const moon = document.getElementById("iconMoon");
+      const THEME_KEY = "pref-theme";
+      const applyTheme = (mode) => {
+        if (mode === "dark") {
+          html.classList.add("dark");
+          sun.classList.remove("hidden");
+          moon.classList.add("hidden");
+        } else {
+          html.classList.remove("dark");
+          sun.classList.add("hidden");
+          moon.classList.remove("hidden");
+        }
+      };
+      const saved = localStorage.getItem(THEME_KEY);
+      const prefersLight = window.matchMedia(
+        "(prefers-color-scheme: light)"
+      ).matches;
+      applyTheme(saved || (prefersLight ? "light" : "dark"));
+      themeBtn.addEventListener("click", () => {
+        const next = html.classList.contains("dark") ? "light" : "dark";
+        localStorage.setItem(THEME_KEY, next);
+        applyTheme(next);
+      });
+
+      // Mobile menu
+      const menuBtn = document.getElementById("menuBtn");
+      const mobileMenu = document.getElementById("mobileMenu");
+      menuBtn.addEventListener("click", () =>
+        mobileMenu.classList.toggle("hidden")
+      );
+      mobileMenu
+        .querySelectorAll("a")
+        .forEach((a) =>
+          a.addEventListener("click", () => mobileMenu.classList.add("hidden"))
+        );
+
+      // Scroll progress
+      const progress = document.getElementById("progress");
+      const onScroll = () => {
+        const h = document.documentElement;
+        const scrolled = h.scrollTop / (h.scrollHeight - h.clientHeight);
+        progress.style.width = scrolled * 100 + "%";
+      };
+      document.addEventListener("scroll", onScroll, { passive: true });
+      onScroll();
+
+      // Reveal on scroll
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add("visible");
+              observer.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.12 }
+      );
+      document
+        .querySelectorAll(".reveal")
+        .forEach((el) => observer.observe(el));
+
+      // Active nav highlighting
+      const sections = [
+        "about",
+        "skills",
+        "projects",
+        "experience",
+        "education",
+        "contact",
+      ];
+      const navlinks = Array.from(document.querySelectorAll(".navlink"));
+      const sectionObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const id = entry.target.id;
+              navlinks.forEach((a) => a.classList.remove("active-link"));
+              const active = navlinks.find(
+                (a) => a.getAttribute("href") === "#" + id
+              );
+              if (active) active.classList.add("active-link");
+            }
+          });
+        },
+        { threshold: 0.6 }
+      );
+      sections.forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) sectionObserver.observe(el);
+      });
+    </script>
+  </body>
+</html>
